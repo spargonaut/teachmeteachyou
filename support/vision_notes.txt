@@ -1,0 +1,29 @@
+todo:
+define the first milestone (MVP):
+- users can post topics they want to learn
+- users can view topics that have been posted
+- users can post topics they can teach(?)
+- users can indicate that they can teach a topic that someone else wants to learn
+
+second milestone:
+- once a user indicates that they can teach a topic that someone else wants to learn, the application attempts to figure out the best time
+- users who post topics they want to learn
+
+-----------------------------
+| learn / teach application |
+-----------------------------
+want to learn:
+- people post topics they want to learn about
+-- need to indicate goals or key features they want to get out of being taught
+-- have the ability to tag topics
+- people can vote on topics that other people have posted
+
+
+can/will teach:
+- people post topics they want to teach
+- people post topics they can teach
+- people can review the topics posted, and indicate that they can teach that topic (or would like to teach that topic)
+
+other functionality:
+- when interest reaches a certain level, attempt to schedule a workshop (reach out to everyone to determine the best times)
+-
