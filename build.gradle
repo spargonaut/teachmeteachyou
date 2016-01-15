@@ -1,0 +1,17 @@
+plugins {
+    id 'groovy'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    dropwizardVersion = '0.8.4'
+}
+
+dependencies {
+    compile 'io.dropwizard:dropwizard-core:0.8.4'
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    
+}
