@@ -4,16 +4,16 @@ import org.junit.Rule
 import spock.lang.Specification
 import org.springframework.boot.test.OutputCapture
 
-class ApplicationTest extends Specification {
+class LOTApplicationTest extends Specification {
 
     @Rule
     OutputCapture capture = new OutputCapture()
 
     def 'should print hello world'() {
-        when:
-        Application.main(null)
+        given:
+        LOTApplication lotApplication = []
 
-        then:
-        capture.toString() == 'hello world!\n'
+        expect:
+        lotApplication.getName() == 'LOTApplication'
     }
 }
