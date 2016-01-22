@@ -2,4 +2,6 @@ subprojects {
     repositories {
         mavenCentral()
     }
+
+    apply plugin: 'groovy'
 }

@@ -1,7 +1,4 @@
-plugins {
-    id 'groovy'
-    id 'application'
-}
+apply plugin: 'application'
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
