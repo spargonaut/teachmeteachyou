@@ -21,3 +21,9 @@ run {
     mainClassName = 'org.spargonaut.LOTApplication'
     args 'server', 'LOTConfiguration.yml'
 }
+
+task runLocal(dependsOn: jar, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.spargonaut.LOTApplication'
+    args 'server', 'LOTConfiguration.yml'
+}
