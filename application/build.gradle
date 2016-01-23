@@ -1,4 +1,12 @@
-apply plugin: 'application'
+plugins {
+    id 'groovy'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '1.2.2'
+}
+
+shadowJar {
+    archiveName = 'LOTApplication.jar'
+}
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
