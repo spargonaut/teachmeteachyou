@@ -1,5 +1,3 @@
-function wantToLearn() {
-    var name_display = document.getElementById('name_display');
-    name_display.innerHTML = 'aloicious abercrombie';
-
+function wantToLearn(name) {
+    document.getElementById('name_display').innerHTML = name;
 }

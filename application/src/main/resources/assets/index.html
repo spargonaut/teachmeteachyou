@@ -7,7 +7,7 @@
         <form>
             name: <input id="name_input" type="text" name="first_name" title="first_name_want_to_learn">
             <br>
-            <input id="name_submit" type="button" value="submit" onClick="wantToLearn()">
+            <input id="name_submit" type="button" value="submit" onClick="wantToLearn(this.form.name_input.value)">
         </form>
         <div id="name_display"></div>
     </body>
