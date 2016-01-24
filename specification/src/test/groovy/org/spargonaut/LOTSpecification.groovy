@@ -3,6 +3,8 @@ package org.spargonaut
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
 import spock.lang.Specification
 
 class LOTSpecification extends Specification {
@@ -23,8 +25,7 @@ class LOTSpecification extends Specification {
         driver.findElement(By.id('name_submit')).click()
 
         then:
-        def name_display = driver.findElement(By.id('name_display'))
-        name_display.getText() == 'aloicious abercrombie'
+        def wait = new WebDriverWait(driver, 0)
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), 'aloicious abercrombie'))
     }
-
 }

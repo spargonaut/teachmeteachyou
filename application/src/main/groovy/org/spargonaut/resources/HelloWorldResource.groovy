@@ -10,6 +10,6 @@ import javax.ws.rs.core.MediaType
 class HelloWorldResource {
     @GET
     def hello() {
-        'hello there'
+        [name: 'aloicious abercrombie']
     }
 }
