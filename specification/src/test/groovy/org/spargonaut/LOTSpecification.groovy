@@ -10,7 +10,6 @@ import spock.lang.Specification
 class LOTSpecification extends Specification {
 
     WebDriver driver = new FirefoxDriver()
-
     def cleanup() {
         driver.quit()
     }
@@ -25,7 +24,8 @@ class LOTSpecification extends Specification {
         driver.findElement(By.id('name_submit')).click()
 
         then:
-        def wait = new WebDriverWait(driver, 0)
+        def maxTimeToWaitForElement = 1
+        def wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), 'aloicious abercrombie'))
     }
 }
