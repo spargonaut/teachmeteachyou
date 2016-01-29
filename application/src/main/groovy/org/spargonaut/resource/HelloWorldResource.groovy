@@ -1,4 +1,4 @@
-package org.spargonaut.resources
+package org.spargonaut.resource
 
 import javax.ws.rs.Consumes
 import javax.ws.rs.POST

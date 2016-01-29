@@ -5,7 +5,7 @@ import io.dropwizard.assets.AssetsBundle
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import org.eclipse.jetty.servlets.CrossOriginFilter
-import org.spargonaut.resources.HelloWorldResource
+import org.spargonaut.resource.HelloWorldResource
 
 import javax.servlet.DispatcherType
 import javax.servlet.FilterRegistration
