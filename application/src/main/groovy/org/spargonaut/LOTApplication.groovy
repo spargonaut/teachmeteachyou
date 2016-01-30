@@ -5,7 +5,7 @@ import io.dropwizard.assets.AssetsBundle
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import org.eclipse.jetty.servlets.CrossOriginFilter
-import org.spargonaut.resource.HelloWorldResource
+import org.spargonaut.resource.StudentResource
 
 import javax.servlet.DispatcherType
 import javax.servlet.FilterRegistration
@@ -24,7 +24,7 @@ class LOTApplication extends Application<LOTConfiguration> {
     }
 
     void run(LOTConfiguration configuration, Environment environment) {
-        environment.jersey().register(new HelloWorldResource())
+        environment.jersey().register(new StudentResource())
 
         FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORSFilter", CrossOriginFilter.class);
         filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, environment.getApplicationContext().getContextPath() + "*");

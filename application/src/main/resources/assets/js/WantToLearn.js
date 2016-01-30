@@ -8,7 +8,7 @@ $(document).ready(function () {
 
         $.ajax({
             method: "POST",
-            url: 'http://localhost:8080/wants/hello',
+            url: 'http://localhost:8080/wants/student',
             data: JSON.stringify(payload),
             dataType: 'json',
             contentType: "application/json"

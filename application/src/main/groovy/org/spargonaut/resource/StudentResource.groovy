@@ -7,12 +7,12 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
-@Path('hello')
+@Path('student')
 @Produces(MediaType.APPLICATION_JSON)
-class HelloWorldResource {
+class StudentResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    Response hello(info) {
+    Response createStudent(info) {
         Response
             .created()
             .entity(['name' : info.name])
