@@ -14,5 +14,6 @@ class StudentProvider {
 
     def createStudent(final studentInfo) {
         studentDAO.insert(toJson(studentInfo))
+        studentDAO.getStudentByName(studentInfo.name)
     }
 }

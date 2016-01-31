@@ -22,10 +22,10 @@ class StudentResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     Response createStudent(info) {
-        studentProvider.createStudent(info)
+        def student = studentProvider.createStudent(info)
         Response
             .created()
-            .entity(info)
+            .entity(student)
             .build()
     }
 }
