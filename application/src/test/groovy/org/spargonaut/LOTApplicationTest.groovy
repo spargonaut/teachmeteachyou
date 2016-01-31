@@ -1,15 +1,15 @@
 package org.spargonaut
 
 import org.junit.Rule
-import spock.lang.Specification
 import org.springframework.boot.test.OutputCapture
+import spock.lang.Specification
 
 class LOTApplicationTest extends Specification {
 
     @Rule
     OutputCapture capture = new OutputCapture()
 
-    def 'should print hello world'() {
+    def 'should name the application LOThello world'() {
         given:
         LOTApplication lotApplication = []
 
