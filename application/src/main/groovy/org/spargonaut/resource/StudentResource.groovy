@@ -1,5 +1,6 @@
 package org.spargonaut.resource
 
+import com.google.inject.Inject
 import org.spargonaut.provider.StudentProvider
 
 import javax.ws.rs.Consumes
@@ -13,11 +14,8 @@ import javax.ws.rs.core.Response
 @Produces(MediaType.APPLICATION_JSON)
 class StudentResource {
 
+    @Inject
     StudentProvider studentProvider
-
-    StudentResource(StudentProvider studentProvider) {
-        this.studentProvider = studentProvider
-    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
