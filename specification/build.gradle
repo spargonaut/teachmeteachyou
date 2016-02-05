@@ -8,3 +8,5 @@ dependencies {
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
     testCompile 'org.seleniumhq.selenium:selenium-java:2.49.1'
 }
+
+build.dependsOn.remove 'check'
