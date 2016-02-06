@@ -7,16 +7,20 @@ function cleanUp {
     kill $!
 }
 
+echo '**********      cleaning the database       **********'
+./gradlew flywayClean --quiet
+
+echo '**********   running database migrations    **********'
+./gradlew flywayMigrate --quiet
+
 echo '**********     building the application     **********'
-cd ./application
 ./gradlew clean build shadowJar --quiet
 
 echo '**********     starting the application     **********'
-cd ..
 ./gradlew runLocal >> /dev/null &
 sleep 7s
 
 echo '**********   running the functional tests   **********'
-./gradlew clean test --quiet
+./gradlew intTest --quiet
 
 trap cleanUp EXIT
