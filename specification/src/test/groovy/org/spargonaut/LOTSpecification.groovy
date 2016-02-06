@@ -23,6 +23,9 @@ class LOTSpecification extends Specification {
         def new_workshop_input = driver.findElement(By.id('new_workshop_title'))
         new_workshop_input.sendKeys('some new workshop')
 
+        def new_workshop_details = driver.findElement(By.id('new_workshop_details'))
+        new_workshop_details.sendKeys('these are some more details')
+
         when:
         driver.findElement(By.id('name_submit')).click()
 
@@ -31,5 +34,6 @@ class LOTSpecification extends Specification {
         def wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), 'aloicious abercrombie'))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_title'), 'some new workshop'))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details'), 'these are some more details'))
     }
 }
