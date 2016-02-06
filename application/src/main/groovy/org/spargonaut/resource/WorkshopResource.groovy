@@ -10,16 +10,16 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
-@Path('student')
+@Path('workshop')
 @Produces(MediaType.APPLICATION_JSON)
-class StudentResource {
+class WorkshopResource {
 
     @Inject
     WorkshopProvider workshopProvider
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    Response createStudent(info) {
+    Response createWorkshop(info) {
         def workshop = workshopProvider.createWorkshop(info)
         Response
             .created()

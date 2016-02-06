@@ -37,7 +37,7 @@ class WorkshopDaoTest extends Specification {
     }
 
     private static void removeAllWorkshops() {
-        List databaseTables = ['student']
+        List databaseTables = ['workshop']
         databaseTables.each { tableName ->
             def query = "delete from \"${tableName}\""
             executeStatement(query)

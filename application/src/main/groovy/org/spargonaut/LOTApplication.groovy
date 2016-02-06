@@ -7,7 +7,7 @@ import io.dropwizard.assets.AssetsBundle
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import org.eclipse.jetty.servlets.CrossOriginFilter
-import org.spargonaut.resource.StudentResource
+import org.spargonaut.resource.WorkshopResource
 
 import javax.servlet.DispatcherType
 import javax.servlet.FilterRegistration
@@ -27,7 +27,7 @@ class LOTApplication extends Application<LOTConfiguration> {
 
     void run(LOTConfiguration configuration, Environment environment) {
         Injector injector = Guice.createInjector(new LOTGuiceModule(configuration, environment))
-        environment.jersey().register(injector.getInstance(StudentResource))
+        environment.jersey().register(injector.getInstance(WorkshopResource))
 
         FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORSFilter", CrossOriginFilter.class);
         filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, environment.getApplicationContext().getContextPath() + "*");

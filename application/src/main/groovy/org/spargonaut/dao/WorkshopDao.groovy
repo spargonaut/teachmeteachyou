@@ -8,9 +8,9 @@ import org.spargonaut.mapper.WorkshopMapper
 
 @RegisterMapper(WorkshopMapper)
 public interface WorkshopDao {
-    @SqlUpdate("INSERT INTO student (value) values (CAST(:value AS jsonb))")
+    @SqlUpdate("INSERT INTO workshop (value) values (CAST(:value AS jsonb))")
     void insert(@Bind('value') final value)
 
-    @SqlQuery("select * from student where value->>'workshopId'=:workshopId")
+    @SqlQuery("select * from workshop where value->>'workshopId'=:workshopId")
     Map getWorkshopById(@Bind('workshopId') final String workshopId)
 }
