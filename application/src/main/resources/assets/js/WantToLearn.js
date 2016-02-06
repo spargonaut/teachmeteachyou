@@ -1,9 +1,11 @@
 $(document).ready(function () {
     $('#name_submit').click(function () {
-        var bar = $('#name_input').val();
+        var name = $('#name_input').val();
+        var new_workshop_title = $('#new_workshop_title').val();
 
         var payload = {
-            name : bar
+            name : name,
+            workshop_title: new_workshop_title
         };
 
         $.ajax({
@@ -15,6 +17,7 @@ $(document).ready(function () {
         }).done(function (data) {
             console.log("sample of data: ", data);
             $('#name_display').text(data.name);
+            $('#workshop_title').text(data.workshop_title);
         });
     });
 });

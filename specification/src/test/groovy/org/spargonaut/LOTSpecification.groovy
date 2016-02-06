@@ -14,11 +14,14 @@ class LOTSpecification extends Specification {
         driver.quit()
     }
 
-    def 'a user can submit their name and have their name show up below the submit button'() {
+    def 'a user can create a new workshop request and have that information show up below the submit button'() {
         given:
         driver.get 'localhost:8080'
         def name_input = driver.findElement(By.id('name_input'))
         name_input.sendKeys('aloicious abercrombie')
+
+        def new_workshop_input = driver.findElement(By.id('new_workshop_title'))
+        new_workshop_input.sendKeys('some new workshop')
 
         when:
         driver.findElement(By.id('name_submit')).click()
@@ -27,5 +30,6 @@ class LOTSpecification extends Specification {
         def maxTimeToWaitForElement = 1
         def wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), 'aloicious abercrombie'))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_title'), 'some new workshop'))
     }
 }
