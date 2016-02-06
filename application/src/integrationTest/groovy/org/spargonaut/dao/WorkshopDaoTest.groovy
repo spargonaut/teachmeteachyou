@@ -65,14 +65,14 @@ class WorkshopDaoTest extends Specification {
     def 'should add a new workshop and be able to get it by ID'() {
         setup:
         def workshopId = UUID.randomUUID().toString()
-        def workshop = [workshopId: workshopId,
-                        name: "jane doe",
-                        workshop_title: "something to do"]
-        println "------>${workshop.getClass()}<-------"
-        workshopDAO.insert(toJson(workshop))
+        workshopDAO.insert(toJson([workshopId    : workshopId,
+                                   name          : "jane doe",
+                                   workshop_title: "something to do"]))
 
         expect:
-        def actualWorkshop = workshopDAO.getWorkshopById(workshopId)
-        workshop == actualWorkshop
+        def expectedWorkshop = [workshopId: workshopId,
+                                name: "jane doe",
+                                workshop_title: "something to do"]
+        workshopDAO.getWorkshopById(workshopId) == expectedWorkshop
     }
 }

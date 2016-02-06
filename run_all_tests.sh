@@ -16,6 +16,9 @@ echo '**********   running database migrations    **********'
 echo '**********     building the application     **********'
 ./gradlew clean build shadowJar --quiet
 
+echo '**********  Running the Integration Tests   **********'
+./gradlew integrationTest --quiet
+
 echo '**********     starting the application     **********'
 ./gradlew runLocal >> /dev/null &
 sleep 7s
