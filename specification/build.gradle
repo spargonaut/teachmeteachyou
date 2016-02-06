@@ -4,9 +4,9 @@ plugins {
 sourceSets.test.groovy.srcDirs = []
 
 sourceSets {
-    intTest {
+    functionalTest {
         groovy {
-            srcDir 'src/integrationTest/groovy'
+            srcDir 'src/functionalTest/groovy'
         }
     }
 }
@@ -14,13 +14,13 @@ sourceSets {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.5'
 
-    intTestCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
-    intTestCompile 'org.seleniumhq.selenium:selenium-java:2.49.1'
+    functionalTestCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    functionalTestCompile 'org.seleniumhq.selenium:selenium-java:2.49.1'
 }
 
 build.dependsOn.remove 'check'
 
-task intTest(type: Test) {
-    testClassesDir = sourceSets.intTest.output.classesDir
-    classpath = sourceSets.intTest.runtimeClasspath
+task functionalTest(type: Test) {
+    testClassesDir = sourceSets.functionalTest.output.classesDir
+    classpath = sourceSets.functionalTest.runtimeClasspath
 }

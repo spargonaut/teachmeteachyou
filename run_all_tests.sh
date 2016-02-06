@@ -21,6 +21,6 @@ echo '**********     starting the application     **********'
 sleep 7s
 
 echo '**********   running the functional tests   **********'
-./gradlew intTest --quiet
+./gradlew functionalTest --quiet
 
 trap cleanUp EXIT
