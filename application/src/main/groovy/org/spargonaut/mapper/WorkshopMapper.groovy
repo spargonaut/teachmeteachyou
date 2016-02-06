@@ -8,7 +8,7 @@ import java.sql.ResultSet
 import java.sql.SQLException
 
 
-class StudentMapper implements ResultSetMapper<Map> {
+class WorkshopMapper implements ResultSetMapper<Map> {
     @Override
     public Map map(final int index, final ResultSet resultSet, final StatementContext statementContext) throws SQLException {
         new JsonSlurper().parseText(resultSet.getObject("value").toString())

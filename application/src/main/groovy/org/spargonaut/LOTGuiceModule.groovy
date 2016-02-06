@@ -6,7 +6,7 @@ import com.google.inject.Singleton
 import io.dropwizard.jdbi.DBIFactory
 import io.dropwizard.setup.Environment
 import org.skife.jdbi.v2.DBI
-import org.spargonaut.dao.StudentDAO
+import org.spargonaut.dao.WorkshopDao
 
 
 class LOTGuiceModule extends AbstractModule {
@@ -27,8 +27,8 @@ class LOTGuiceModule extends AbstractModule {
     }
 
     @Provides
-    public StudentDAO prepareStudentDAO(DBI dbi) {
-        dbi.onDemand(StudentDAO)
+    public WorkshopDao prepareWorkshopDao(DBI dbi) {
+        dbi.onDemand(WorkshopDao)
     }
 
     @Override
