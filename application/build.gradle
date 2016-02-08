@@ -1,3 +1,6 @@
+import org.spargonaut.gradleApp.StartBackgroundApp
+import org.spargonaut.gradleApp.StopBackgroundApp
+
 plugins {
     id 'groovy'
     id 'com.github.johnrengelman.shadow' version '1.2.2'
@@ -10,6 +13,7 @@ shadowJar {
 
 ext {
     dropwizardVersion = '0.9.1'
+    background = [:]
 }
 
 flyway {
@@ -63,6 +67,14 @@ task runLocal(dependsOn: jar, type: JavaExec) {
     args 'server', 'LOTConfiguration.yml'
 }
 
+task startBackgroundApp(type: StartBackgroundApp) {
+    dependsOn 'flywayMigrate'
+    mustRunAfter 'flywayMigrate'
+}
+
+task stopBackgroundApp(type: StopBackgroundApp) {
+}
+
 task integrationTest(type: Test, dependsOn: build) {
     description 'Runs the integration tests'
     testClassesDir = sourceSets.integrationTest.output.classesDir
@@ -71,6 +83,8 @@ task integrationTest(type: Test, dependsOn: build) {
 
 task functionalTest(type: Test) {
     description 'Runs the functional tests'
+    dependsOn 'startBackgroundApp'
+    finalizedBy stopBackgroundApp
     testClassesDir = sourceSets.functionalTest.output.classesDir
     classpath = sourceSets.functionalTest.runtimeClasspath
 }
