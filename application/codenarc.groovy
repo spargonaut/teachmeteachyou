@@ -190,4 +190,55 @@ ruleset {
     RequiredRegex
     RequiredString
     StatelessClass
+
+    // rulesets/imports.xml
+    DuplicateImport
+    ImportFromSamePackage
+    ImportFromSunPackages
+    MisorderedStaticImports
+    NoWildcardImports
+    UnnecessaryGroovyImport
+    UnusedImport
+
+    // rulesets/jdbc.xml
+    DirectConnectionManagement
+    JdbcConnectionReference
+    //JdbcResultSetReference
+    JdbcStatementReference
+
+    // rulesets/junit.xml
+    ChainedTest
+    CoupledTestCase
+    JUnitAssertAlwaysFails
+    JUnitAssertAlwaysSucceeds
+    JUnitFailWithoutMessage
+    JUnitLostTest
+    JUnitPublicField
+    //JUnitPublicNonTestMethod
+    JUnitPublicProperty
+    JUnitSetUpCallsSuper
+    JUnitStyleAssertions
+    JUnitTearDownCallsSuper
+    JUnitTestMethodWithoutAssert
+    JUnitUnnecessarySetUp
+    JUnitUnnecessaryTearDown
+    JUnitUnnecessaryThrowsException
+    SpockIgnoreRestUsed
+    UnnecessaryFail
+    UseAssertEqualsInsteadOfAssertTrue
+    UseAssertFalseInsteadOfNegation
+    UseAssertNullInsteadOfAssertEquals
+    UseAssertSameInsteadOfAssertTrue
+    UseAssertTrueInsteadOfAssertEquals
+    UseAssertTrueInsteadOfNegation
+
+    // rulesets/logging.xml
+    LoggerForDifferentClass
+    LoggerWithWrongModifiers
+    LoggingSwallowsStacktrace
+    MultipleLoggers
+    PrintStackTrace
+    Println
+    SystemErrPrint
+    SystemOutPrint
 }

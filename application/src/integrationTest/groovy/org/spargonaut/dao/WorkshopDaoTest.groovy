@@ -10,20 +10,20 @@ import static groovy.json.JsonOutput.toJson
 
 class WorkshopDaoTest extends Specification {
 
-    static DBI dbi
-    static WorkshopDao workshopDAO
+    private static DBI dbi
+    private static WorkshopDao workshopDAO
 
-    void setupSpec() {
+    private void setupSpec() {
         dbi = setupDbi()
         removeAllWorkshops()
         workshopDAO = dbi.onDemand(WorkshopDao)
     }
 
-    void setup() {
+    private void setup() {
         removeAllWorkshops()
     }
 
-    void cleanupSpec() {
+    private void cleanupSpec() {
         removeAllWorkshops()
     }
 
@@ -61,7 +61,7 @@ class WorkshopDaoTest extends Specification {
         })
     }
 
-    void 'should add a new workshop and be able to get it by ID'() {
+    private void 'should add a new workshop and be able to get it by ID'() {
         setup:
         String workshopId = UUID.randomUUID().toString()
         workshopDAO.insert(toJson([workshopId:workshopId,
