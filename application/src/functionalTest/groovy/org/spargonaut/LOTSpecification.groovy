@@ -18,14 +18,18 @@ class LOTSpecification extends Specification {
     void 'a user can create a new workshop request and have that information show up below the submit button'() {
         given:
         driver.get 'localhost:8080'
+
         WebElement name_input = driver.findElement(By.id('name_input'))
-        name_input.sendKeys('aloicious abercrombie')
+        String userName = 'aloicious abercrombie'
+        name_input.sendKeys(userName)
 
         WebElement new_workshop_input = driver.findElement(By.id('new_workshop_title'))
-        new_workshop_input.sendKeys('some new workshop')
+        String workshopName = 'some new workshop'
+        new_workshop_input.sendKeys(workshopName)
 
         WebElement new_workshop_details = driver.findElement(By.id('new_workshop_details'))
-        new_workshop_details.sendKeys('these are some more details')
+        String workshopDetails = 'these are some more details'
+        new_workshop_details.sendKeys(workshopDetails)
 
         when:
         driver.findElement(By.id('name_submit')).click()
@@ -33,8 +37,8 @@ class LOTSpecification extends Specification {
         then:
         int maxTimeToWaitForElement = 1
         WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), 'aloicious abercrombie'))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_title'), 'some new workshop'))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details'), 'these are some more details'))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), userName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_title'), workshopName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details'), workshopDetails))
     }
 }

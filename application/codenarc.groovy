@@ -91,4 +91,62 @@ ruleset {
     ParameterReassignment
     TernaryCouldBeElvis
     VectorIsObsolete
+
+    // rulesets/design.xml
+    AbstractClassWithPublicConstructor
+    AbstractClassWithoutAbstractMethod
+    //AssignmentToStaticFieldFromInstanceMethod
+    BooleanMethodReturnsNull
+    BuilderMethodWithSideEffects
+    CloneableWithoutClone
+    CloseWithoutCloseable
+    CompareToWithoutComparable
+    ConstantsOnlyInterface
+    EmptyMethodInAbstractClass
+    FinalClassWithProtectedMember
+    ImplementationAsType
+    Instanceof
+    LocaleSetDefault
+    NestedForLoop
+    PrivateFieldCouldBeFinal
+    PublicInstanceField
+    ReturnsNullInsteadOfEmptyArray
+    ReturnsNullInsteadOfEmptyCollection
+    SimpleDateFormatMissingLocale
+    StatelessSingleton
+    ToStringReturnsNull
+
+    // rulesets/dry.xml
+    DuplicateListLiteral
+    DuplicateMapLiteral
+    DuplicateNumberLiteral
+    DuplicateStringLiteral
+
+////-------------------------------------
+//    // rulesets/enhanced.xml
+//    CloneWithoutCloneable
+//    JUnitAssertEqualsConstantActualValue
+//    UnsafeImplementationAsMap
+////-------------------------------------
+    // rulesets/exceptions.xml
+    CatchArrayIndexOutOfBoundsException
+    CatchError
+    CatchException
+    CatchIllegalMonitorStateException
+    CatchIndexOutOfBoundsException
+    CatchNullPointerException
+    CatchRuntimeException
+    CatchThrowable
+    ConfusingClassNamedException
+    ExceptionExtendsError
+    ExceptionExtendsThrowable
+    ExceptionNotThrown
+    MissingNewInThrowStatement
+    ReturnNullFromCatchBlock
+    SwallowThreadDeath
+    ThrowError
+    ThrowException
+    ThrowNullPointerException
+    ThrowRuntimeException
+    ThrowThrowable
 }
