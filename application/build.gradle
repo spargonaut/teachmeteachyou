@@ -5,6 +5,7 @@ plugins {
     id 'groovy'
     id 'com.github.johnrengelman.shadow' version '1.2.2'
     id 'org.flywaydb.flyway' version '3.2'
+    id 'codenarc'
 }
 
 shadowJar {
@@ -36,6 +37,10 @@ sourceSets {
             srcDir 'src/functionalTest/groovy'
         }
     }
+}
+
+codenarc {
+    configFile file("${projectDir}/codenarc.groovy")
 }
 
 dependencies {

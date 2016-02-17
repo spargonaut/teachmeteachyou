@@ -29,10 +29,10 @@ class LOTApplication extends Application<LOTConfiguration> {
         Injector injector = Guice.createInjector(new LOTGuiceModule(configuration, environment))
         environment.jersey().register(injector.getInstance(WorkshopResource))
 
-        FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORSFilter", CrossOriginFilter.class);
-        filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, environment.getApplicationContext().getContextPath() + "*");
-        filter.setInitParameter("allowedMethods", "GET,PUT,POST,OPTIONS,DELETE,HEAD");
-        filter.setInitParameter("allowedOrigins", "*");
-        filter.setInitParameter("allowedHeaders", "Origin, Content-Type, Accept, X-Requested-With");
+        FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORSFilter", CrossOriginFilter.class)
+        filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, environment.getApplicationContext().getContextPath() + "*")
+        filter.setInitParameter("allowedMethods", "GET,PUT,POST,OPTIONS,DELETE,HEAD")
+        filter.setInitParameter("allowedOrigins", "*")
+        filter.setInitParameter("allowedHeaders", "Origin, Content-Type, Accept, X-Requested-With")
     }
 }

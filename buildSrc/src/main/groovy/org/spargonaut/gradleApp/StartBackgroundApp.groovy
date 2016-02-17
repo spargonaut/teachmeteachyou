@@ -20,7 +20,7 @@ class StartBackgroundApp extends DefaultTask {
         while ((line = reader.readLine()) != null) {
             if (line.contains('Server: Started')) {
                 project.extensions.extraProperties.properties.get('background').put('appProcess', process)
-                break;
+                break
             }
         }
     }
