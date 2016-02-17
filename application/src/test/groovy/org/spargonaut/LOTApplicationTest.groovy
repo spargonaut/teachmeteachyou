@@ -9,7 +9,7 @@ class LOTApplicationTest extends Specification {
     @Rule
     OutputCapture capture = new OutputCapture()
 
-    def 'should name the application LOThello world'() {
+    void 'should name the application LOThello world'() {
         given:
         LOTApplication lotApplication = []
 

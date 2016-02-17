@@ -1,0 +1,15 @@
+done - configure gradle build to not run the functional tests
+done - generate UUIDs for the workshops in the provider classes
+add screenshots (google: screenshot taker) to selenium output
+done - integration test (for the DAO)
+
+think about deduping
+
+new name: TeachMeTeachYou
+
+questions:
+should the buildSrc directory be in the application direcotry or the root directory?
+
+
+fix:
+not stopping all the tests when a build step fails (in run all tests)

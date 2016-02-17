@@ -20,7 +20,7 @@ class WorkshopResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     Response createWorkshop(info) {
-        def workshop = workshopProvider.createWorkshop(info)
+        Map workshop = workshopProvider.createWorkshop(info)
         Response
             .created()
             .entity(workshop)

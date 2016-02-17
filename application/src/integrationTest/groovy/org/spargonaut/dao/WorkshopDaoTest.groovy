@@ -39,7 +39,7 @@ class WorkshopDaoTest extends Specification {
     private static void removeAllWorkshops() {
         List databaseTables = ['workshop']
         databaseTables.each { tableName ->
-            def query = "delete from \"${tableName}\""
+            String query = "delete from \"${tableName}\""
             executeStatement(query)
         }
     }
@@ -62,15 +62,15 @@ class WorkshopDaoTest extends Specification {
         })
     }
 
-    def 'should add a new workshop and be able to get it by ID'() {
+    void 'should add a new workshop and be able to get it by ID'() {
         setup:
-        def workshopId = UUID.randomUUID().toString()
+        String workshopId = UUID.randomUUID().toString()
         workshopDAO.insert(toJson([workshopId    : workshopId,
                                    name          : "jane doe",
                                    workshop_title: "something to do"]))
 
         expect:
-        def expectedWorkshop = [workshopId: workshopId,
+        Map expectedWorkshop = [workshopId: workshopId,
                                 name: "jane doe",
                                 workshop_title: "something to do"]
         workshopDAO.getWorkshopById(workshopId) == expectedWorkshop

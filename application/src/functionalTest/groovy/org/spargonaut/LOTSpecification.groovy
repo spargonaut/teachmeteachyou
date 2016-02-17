@@ -2,6 +2,7 @@ package org.spargonaut
 
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
@@ -10,28 +11,28 @@ import spock.lang.Specification
 class LOTSpecification extends Specification {
 
     WebDriver driver = new FirefoxDriver()
-    def cleanup() {
+    void cleanup() {
         driver.quit()
     }
 
-    def 'a user can create a new workshop request and have that information show up below the submit button'() {
+    void 'a user can create a new workshop request and have that information show up below the submit button'() {
         given:
         driver.get 'localhost:8080'
-        def name_input = driver.findElement(By.id('name_input'))
+        WebElement name_input = driver.findElement(By.id('name_input'))
         name_input.sendKeys('aloicious abercrombie')
 
-        def new_workshop_input = driver.findElement(By.id('new_workshop_title'))
+        WebElement new_workshop_input = driver.findElement(By.id('new_workshop_title'))
         new_workshop_input.sendKeys('some new workshop')
 
-        def new_workshop_details = driver.findElement(By.id('new_workshop_details'))
+        WebElement new_workshop_details = driver.findElement(By.id('new_workshop_details'))
         new_workshop_details.sendKeys('these are some more details')
 
         when:
         driver.findElement(By.id('name_submit')).click()
 
         then:
-        def maxTimeToWaitForElement = 1
-        def wait = new WebDriverWait(driver, maxTimeToWaitForElement)
+        int maxTimeToWaitForElement = 1
+        WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), 'aloicious abercrombie'))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_title'), 'some new workshop'))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details'), 'these are some more details'))
