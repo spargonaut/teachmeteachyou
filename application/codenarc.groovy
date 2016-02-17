@@ -149,4 +149,45 @@ ruleset {
     ThrowNullPointerException
     ThrowRuntimeException
     ThrowThrowable
+
+    // rulesets/formatting.xml
+    BlankLineBeforePackage
+    BracesForClass
+    BracesForForLoop
+    BracesForIfElse
+    BracesForMethod
+    BracesForTryCatchFinally
+    //ClassJavadoc
+    ClosureStatementOnOpeningLineOfMultipleLineClosure
+    ConsecutiveBlankLines
+    FileEndsWithoutNewline
+    LineLength
+    MissingBlankLineAfterImports
+    MissingBlankLineAfterPackage
+    SpaceAfterCatch
+    SpaceAfterClosingBrace
+    SpaceAfterComma
+    SpaceAfterFor
+    SpaceAfterIf
+    SpaceAfterOpeningBrace
+    SpaceAfterSemicolon
+    SpaceAfterSwitch
+    SpaceAfterWhile
+    SpaceAroundClosureArrow
+    SpaceAroundMapEntryColon
+    SpaceAroundOperator
+    SpaceBeforeClosingBrace
+    SpaceBeforeOpeningBrace
+    TrailingWhitespace
+
+    // rulesets/generic.xml
+    IllegalClassMember
+    IllegalClassReference
+    IllegalPackageReference
+    IllegalRegex
+    IllegalString
+    IllegalSubclass
+    RequiredRegex
+    RequiredString
+    StatelessClass
 }

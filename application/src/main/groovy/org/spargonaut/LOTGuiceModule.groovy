@@ -8,7 +8,6 @@ import io.dropwizard.setup.Environment
 import org.skife.jdbi.v2.DBI
 import org.spargonaut.dao.WorkshopDao
 
-
 class LOTGuiceModule extends AbstractModule {
 
     private final LOTConfiguration configuration

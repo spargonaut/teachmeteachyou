@@ -8,7 +8,6 @@ import spock.lang.Specification
 
 import static groovy.json.JsonOutput.toJson
 
-
 class WorkshopDaoTest extends Specification {
 
     static DBI dbi
@@ -65,14 +64,14 @@ class WorkshopDaoTest extends Specification {
     void 'should add a new workshop and be able to get it by ID'() {
         setup:
         String workshopId = UUID.randomUUID().toString()
-        workshopDAO.insert(toJson([workshopId    : workshopId,
-                                   name          : "jane doe",
-                                   workshop_title: "something to do"]))
+        workshopDAO.insert(toJson([workshopId:workshopId,
+                                   name:"jane doe",
+                                   workshop_title:"something to do"]))
 
         expect:
-        Map expectedWorkshop = [workshopId: workshopId,
-                                name: "jane doe",
-                                workshop_title: "something to do"]
+        Map expectedWorkshop = [workshopId:workshopId,
+                                name:"jane doe",
+                                workshop_title:"something to do"]
         workshopDAO.getWorkshopById(workshopId) == expectedWorkshop
     }
 }
