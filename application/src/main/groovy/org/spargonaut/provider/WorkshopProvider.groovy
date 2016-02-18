@@ -10,7 +10,7 @@ class WorkshopProvider {
     @Inject
     WorkshopDao workshopDao
 
-    Map createWorkshop(final workshopInfo) {
+    Map newWorkshopWith(final workshopInfo) {
         workshopInfo.workshopId = UUID.randomUUID().toString()
         workshopDao.insert(toJson(workshopInfo))
         workshopDao.getWorkshopById(workshopInfo.workshopId)

@@ -19,17 +19,17 @@ class LOTSpecification extends Specification {
         given:
         driver.get 'localhost:8080'
 
-        WebElement name_input = driver.findElement(By.id('name_input'))
+        WebElement nameInput = driver.findElement(By.id('name_input'))
         String userName = 'aloicious abercrombie'
-        name_input.sendKeys(userName)
+        nameInput.sendKeys(userName)
 
-        WebElement new_workshop_input = driver.findElement(By.id('new_workshop_title'))
+        WebElement newWorkshopInput = driver.findElement(By.id('new_workshop_title'))
         String workshopName = 'some new workshop'
-        new_workshop_input.sendKeys(workshopName)
+        newWorkshopInput.sendKeys(workshopName)
 
-        WebElement new_workshop_details = driver.findElement(By.id('new_workshop_details'))
+        WebElement newWorkshopDetails = driver.findElement(By.id('new_workshop_details'))
         String workshopDetails = 'these are some more details'
-        new_workshop_details.sendKeys(workshopDetails)
+        newWorkshopDetails.sendKeys(workshopDetails)
 
         when:
         driver.findElement(By.id('name_submit')).click()

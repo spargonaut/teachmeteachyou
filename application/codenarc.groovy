@@ -241,4 +241,50 @@ ruleset {
     Println
     SystemErrPrint
     SystemOutPrint
+
+    // rulesets/naming.xml
+    AbstractClassName
+    ClassName
+    ClassNameSameAsFilename
+    //ClassNameSameAsSuperclass
+    ConfusingMethodName
+    FactoryMethodName
+    FieldName
+    InterfaceName
+    //InterfaceNameSameAsSuperInterface
+    //MethodName FIXME
+    ObjectOverrideMisspelledMethodName
+    PackageName
+    PackageNameMatchesFilePath
+    ParameterName
+    PropertyName
+    VariableName
+
+    // rulesets/security.xml
+    FileCreateTempFile
+    InsecureRandom
+    JavaIoPackageAccess
+    NonFinalPublicField
+    NonFinalSubclassOfSensitiveInterface
+    ObjectFinalize
+    PublicFinalizeMethod
+    SystemExit
+    UnsafeArrayDeclaration
+
+    // rulesets/serialization.xml
+    EnumCustomSerializationIgnored
+    SerialPersistentFields
+    SerialVersionUID
+    SerializableClassMustDefineSerialVersionUID
+
+    // rulesets/size.xml
+    AbcComplexity   // DEPRECATED: Use the AbcMetric rule instead. Requires the GMetrics jar
+    AbcMetric   // Requires the GMetrics jar
+    ClassSize
+    CrapMetric   // Requires the GMetrics jar and a Cobertura coverage file
+    CyclomaticComplexity   // Requires the GMetrics jar
+    MethodCount
+    MethodSize
+    NestedBlockDepth
+    ParameterCount
 }

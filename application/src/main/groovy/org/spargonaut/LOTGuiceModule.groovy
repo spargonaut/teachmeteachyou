@@ -21,8 +21,7 @@ class LOTGuiceModule extends AbstractModule {
     @Provides
     @Singleton
     public DBI prepareJdbi(final LOTConfiguration ckonfiguration, final Environment environment) {
-        final DBIFactory dbiFactory = new DBIFactory()
-        dbiFactory.build(environment, configuration.getDataSourceFactory(), 'cognitiveConnections')
+        new DBIFactory().build(environment, configuration.getDataSourceFactory(), 'cognitiveConnections')
     }
 
     @Provides

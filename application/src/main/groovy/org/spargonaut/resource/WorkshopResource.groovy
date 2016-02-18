@@ -19,8 +19,8 @@ class WorkshopResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    Response createWorkshop(info) {
-        Map workshop = workshopProvider.createWorkshop(info)
+    Response newWorkshopWith(info) {
+        Map workshop = workshopProvider.newWorkshopWith(info)
         Response
             .created()
             .entity(workshop)
