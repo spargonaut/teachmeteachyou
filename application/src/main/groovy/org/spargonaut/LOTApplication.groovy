@@ -29,7 +29,7 @@ class LOTApplication extends Application<LOTConfiguration> {
         Injector injector = Guice.createInjector(new LOTGuiceModule(configuration, environment))
         environment.jersey().register(injector.getInstance(WorkshopResource))
 
-        FilterRegistration.Dynamic filter = environment.servlets().addFilter('CORSFilter', CrossOriginFilter.class)
+        FilterRegistration.Dynamic filter = environment.servlets().addFilter('CORSFilter', CrossOriginFilter)
 
         String urlPatterns = "${environment.getApplicationContext()}*"
         filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, urlPatterns)
