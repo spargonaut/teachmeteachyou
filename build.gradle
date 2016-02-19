@@ -125,5 +125,6 @@ idea {
         excludeDirs += file 'gradle'
         excludeDirs += file 'src/UI/dist'
         excludeDirs += file 'src/UI/node_modules'
+        excludeDirs += file 'src/main/resources/assets/ui'
     }
 }
