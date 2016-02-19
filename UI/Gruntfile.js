@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('default', ['clean', 'copy', 'browserify']);
+    grunt.registerTask('default', ['clean', 'copy']);
 
     grunt.initConfig({
         copy: {
@@ -13,7 +13,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: ['index.html'],
+                        src: ['**'],
                         dest: 'dist/'
                     }
                 ]

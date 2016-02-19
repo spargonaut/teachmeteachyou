@@ -3,3 +3,16 @@ subprojects {
         mavenCentral()
     }
 }
+
+task cleanUI(type: Delete) {
+    outputs.upToDateWhen { false }
+    delete 'application/src/main/resources/assets/ui'
+}
+
+
+task deployUI(type: Copy) {
+    outputs.upToDateWhen { false }
+    dependsOn 'cleanUI'
+    from('UI/dist')
+    into('application/src/main/resources/assets/ui')
+}
