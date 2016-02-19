@@ -121,5 +121,9 @@ idea {
     module {
         testSourceDirs += sourceSets.integrationTest.groovy.srcDirs
         testSourceDirs += sourceSets.functionalTest.groovy.srcDirs
+
+        excludeDirs += file 'gradle'
+        excludeDirs += file 'src/UI/dist'
+        excludeDirs += file 'src/UI/node_modules'
     }
 }
