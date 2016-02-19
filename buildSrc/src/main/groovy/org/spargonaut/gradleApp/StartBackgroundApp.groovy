@@ -5,9 +5,13 @@ import org.gradle.api.tasks.TaskAction
 
 class StartBackgroundApp extends DefaultTask {
 
+    def classpath
+    def mainClass
+    def args
+
     @TaskAction
     def startApp() {
-        def args = ['java', '-cp', project.sourceSets.main.runtimeClasspath.join(':'), 'org.spargonaut.LOTApplication', 'server', 'LOTConfiguration.yml']
+        def args = ['java', '-cp', classpath.join(':'), mainClass, *args]
         ProcessBuilder builder = new ProcessBuilder(args)
         builder.redirectErrorStream(true)
         builder.directory(new File('.'))

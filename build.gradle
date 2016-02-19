@@ -79,6 +79,10 @@ task runLocal(dependsOn: jar, type: JavaExec) {
 
 task startBackgroundApp(type: StartBackgroundApp) {
     dependsOn 'flywayMigrate'
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.spargonaut.LOTApplication'
+    args = ['server', 'LOTConfiguration.yml']
 }
 
 task stopBackgroundApp(type: StopBackgroundApp) {
