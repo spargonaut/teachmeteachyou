@@ -1,9 +1,9 @@
 package org.spargonaut.provider
 
+import static groovy.json.JsonOutput.toJson
+
 import com.google.inject.Inject
 import org.spargonaut.dao.WorkshopDao
-
-import static groovy.json.JsonOutput.toJson
 
 class WorkshopProvider {
 

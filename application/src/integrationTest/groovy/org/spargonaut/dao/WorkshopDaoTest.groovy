@@ -1,12 +1,12 @@
 package org.spargonaut.dao
 
+import static groovy.json.JsonOutput.toJson
+
 import org.skife.jdbi.v2.DBI
 import org.skife.jdbi.v2.Handle
 import org.skife.jdbi.v2.TransactionCallback
 import org.skife.jdbi.v2.TransactionStatus
 import spock.lang.Specification
-
-import static groovy.json.JsonOutput.toJson
 
 class WorkshopDaoTest extends Specification {
 

@@ -3,3 +3,6 @@
 build
 .gradle
 *.iml
+
+dist
+node_modules
