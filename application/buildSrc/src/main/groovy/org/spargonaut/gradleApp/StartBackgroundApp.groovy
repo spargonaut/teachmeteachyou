@@ -7,7 +7,7 @@ class StartBackgroundApp extends DefaultTask {
 
     @TaskAction
     def startApp() {
-        def args = ['java', '-cp', project.sourceSets.main.runtimeClasspath.join(':'), 'org.spargonaut.LOTApplication', 'server', 'application/LOTConfiguration.yml']
+        def args = ['java', '-cp', project.sourceSets.main.runtimeClasspath.join(':'), 'org.spargonaut.LOTApplication', 'server', 'LOTConfiguration.yml']
         ProcessBuilder builder = new ProcessBuilder(args)
         builder.redirectErrorStream(true)
         builder.directory(new File('.'))
@@ -17,11 +17,15 @@ class StartBackgroundApp extends DefaultTask {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stdout))
 
         def line
+        boolean success = false;
         while ((line = reader.readLine()) != null) {
             if (line.contains('Server: Started')) {
+                success = true
                 project.extensions.extraProperties.properties.get('background').put('appProcess', process)
                 break
             }
         }
+        if(!success)
+            throw new Exception("App failed to start in background")
     }
 }
