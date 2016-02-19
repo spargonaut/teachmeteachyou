@@ -1,6 +1,10 @@
 module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+
+    grunt.registerTask('default', ['clean', 'copy', 'browserify']);
 
     grunt.initConfig({
         copy: {
@@ -9,11 +13,20 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'src/',
-                        src: ['**'],
+                        src: ['index.html'],
                         dest: 'dist/'
                     }
                 ]
             }
-        }
+        },
+
+        browserify: {
+            main: {
+                src: 'src/js/*.js',
+                dest: 'dist/js/bundle.js'
+            }
+        },
+
+        clean: ['dist']
     });
 };
