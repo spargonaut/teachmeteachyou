@@ -9,10 +9,16 @@ task cleanUI(type: Delete) {
     delete 'application/src/main/resources/assets/ui'
 }
 
+task grunt(type: Exec) {
+    outputs.upToDateWhen { false }
+    workingDir './UI'
+    commandLine 'grunt'
+}
 
 task deployUI(type: Copy) {
     outputs.upToDateWhen { false }
     dependsOn 'cleanUI'
+    dependsOn 'grunt'
     from('UI/dist')
     into('application/src/main/resources/assets/ui')
 }

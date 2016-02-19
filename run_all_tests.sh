@@ -2,6 +2,9 @@
 
 #set -e
 
+echo '**********        deploying the UI          **********'
+./gradlew deployUI --quiet
+
 echo '**********      cleaning the database       **********'
 ./gradlew flywayClean --quiet
 
