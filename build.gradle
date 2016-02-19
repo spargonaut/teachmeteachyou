@@ -6,6 +6,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '1.2.2'
     id 'org.flywaydb.flyway' version '3.2'
     id 'codenarc'
+    id 'idea'
 }
 
 repositories {
@@ -114,4 +115,11 @@ task deployUI(type: Copy) {
     dependsOn 'grunt'
     from 'src/UI/dist'
     into 'src/main/resources/assets/ui'
+}
+
+idea {
+    module {
+        testSourceDirs += sourceSets.integrationTest.groovy.srcDirs
+        testSourceDirs += sourceSets.functionalTest.groovy.srcDirs
+    }
 }
