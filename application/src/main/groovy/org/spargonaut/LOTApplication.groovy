@@ -22,7 +22,7 @@ class LOTApplication extends Application<LOTConfiguration> {
     }
 
     void initialize(Bootstrap<LOTConfiguration> configuration) {
-        configuration.addBundle(new AssetsBundle('/assets/', '/', 'index.html'))
+        configuration.addBundle(new AssetsBundle('/assets/ui', '/', 'index.html'))
     }
 
     void run(LOTConfiguration configuration, Environment environment) {
