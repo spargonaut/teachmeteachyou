@@ -102,20 +102,12 @@ task functionalTest(type: Test) {
     classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
-task cleanUI(type: Delete) {
-    outputs.upToDateWhen { false }
-    delete 'application/src/main/resources/assets/ui'
-}
-
 task grunt(type: Exec) {
-    outputs.upToDateWhen { false }
     workingDir 'src/UI'
     commandLine 'grunt'
 }
 
 task deployUI(type: Copy) {
-    outputs.upToDateWhen { false }
-    dependsOn 'cleanUI'
     dependsOn 'grunt'
     from 'src/UI/dist'
     into 'src/main/resources/assets/ui'
