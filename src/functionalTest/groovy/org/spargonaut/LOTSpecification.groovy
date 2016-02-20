@@ -28,8 +28,8 @@ class LOTSpecification extends Specification {
         newWorkshopInput.sendKeys(workshopName)
 
         WebElement newWorkshopDetails = driver.findElement(By.id('new_workshop_details'))
-        String workshopDetails = 'these are some more details'
-        newWorkshopDetails.sendKeys(workshopDetails)
+        String workshopDtls = 'these are some more details'
+        newWorkshopDetails.sendKeys(workshopDtls)
 
         when:
         driver.findElement(By.id('name_submit')).click()
@@ -37,8 +37,8 @@ class LOTSpecification extends Specification {
         then:
         int maxTimeToWaitForElement = 1
         WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('name_display'), userName))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_title'), workshopName))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details'), workshopDetails))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('name_display'), userName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('workshop_title'), workshopName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('workshop_details'), workshopDtls))
     }
 }

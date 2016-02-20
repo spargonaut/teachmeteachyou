@@ -25,12 +25,12 @@ var workshop = {
             workshop.classList.add('workshop');
 
             var name = document.createElement('span');
-            name.setAttribute('id', 'name_display');
+            name.setAttribute('class', 'name_display');
             name.textContent = data.name;
             workshop.appendChild(name);
 
             var title = document.createElement('span');
-            title.setAttribute('id', 'workshop_title');
+            title.setAttribute('class', 'workshop_title');
             title.textContent = data.workshop_title;
             workshop.appendChild(title);
 
@@ -38,7 +38,7 @@ var workshop = {
             workshop.appendChild(lineBreak);
 
             var details = document.createElement('span');
-            details.setAttribute('id', 'workshop_details');
+            details.setAttribute('class', 'workshop_details');
             details.textContent = data.workshop_details;
             workshop.appendChild(details);
 
