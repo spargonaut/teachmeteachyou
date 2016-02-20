@@ -20,9 +20,30 @@ var workshop = {
             contentType: "application/json"
         }).done(function (data) {
             console.log("sample of data: ", data);
-            jquery('#name_display').text(data.name);
-            jquery('#workshop_title').text(data.workshop_title);
-            jquery('#workshop_details').text(data.workshop_details);
+
+            var workshop = document.createElement('div');
+            workshop.classList.add('workshop');
+
+            var name = document.createElement('span');
+            name.setAttribute('id', 'name_display');
+            name.textContent = data.name;
+            workshop.appendChild(name);
+
+            var title = document.createElement('span');
+            title.setAttribute('id', 'workshop_title');
+            title.textContent = data.workshop_title;
+            workshop.appendChild(title);
+
+            var lineBreak = document.createElement('br');
+            workshop.appendChild(lineBreak);
+
+            var details = document.createElement('span');
+            details.setAttribute('id', 'workshop_details');
+            details.textContent = data.workshop_details;
+            workshop.appendChild(details);
+
+
+            jquery('#workshops').append(workshop);
         });
     }
 }
