@@ -1,19 +1,16 @@
 var jquery = require('jquery');
 
 var workshop = {
-
-    createSpan : function (className, content) {
-        var element = document.createElement('span');
-        element.setAttribute('class', className);
-        element.textContent = content;
-        return element;
-    },
-
     addWorkshop : function () {
-        var newSpan = this.createSpan;
-
         return function (data) {
             console.log("sample of data: ", data);
+
+            var newSpan = function (className, content) {
+                var element = document.createElement('span');
+                element.setAttribute('class', className);
+                element.textContent = content;
+                return element;
+            }
 
             var workshop = document.createElement('div');
             workshop.classList.add('workshop');
