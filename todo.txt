@@ -9,6 +9,7 @@ new name: TeachMeTeachYou
 
 questions:
 should the buildSrc directory be in the application direcotry or the root directory?
+initial install of grunt/npm stuff via gradle (via initial import of the project)
 
 
 fix:
