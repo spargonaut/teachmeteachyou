@@ -3,10 +3,22 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
-    grunt.registerTask('default', ['clean', 'copy', 'browserify']);
+    grunt.registerTask('default', ['clean', 'mochaTest', 'copy', 'browserify']);
 
     grunt.initConfig({
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'dot',
+                    quiet: false,
+                    clearRequireCache: false
+                },
+                src: ['test/**/*.js']
+            }
+        },
+
         copy: {
             main: {
                 files: [
