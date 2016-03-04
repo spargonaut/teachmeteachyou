@@ -32,7 +32,7 @@ class LOTSpecification extends Specification {
         newWorkshopDetails.sendKeys(workshopDtls)
 
         when:
-        driver.findElement(By.id('name_submit')).click()
+        driver.findElement(By.id('workshop_submit')).click()
 
         then:
         int maxTimeToWaitForElement = 1

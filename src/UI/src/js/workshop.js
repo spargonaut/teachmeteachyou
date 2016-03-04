@@ -11,16 +11,29 @@ var workshop = {
             return input_element;
         };
 
+        var new_label = function (name, labelContent) {
+            var label = doc.createElement('label');
+            label.setAttribute('for', name);
+            label.textContent = labelContent + ":";
+            return label;
+        };
+
         var submit_button = doc.createElement('button');
         submit_button.setAttribute('id', 'workshop_submit');
         submit_button.setAttribute('type', 'button');
         submit_button.setAttribute('onClick', 'createWorkshop()');
+        submit_button.textContent = 'Create Workshop';
 
         var workshop_form = doc.createElement('div');
         workshop_form.classList.add('workshop');
+        workshop_form.appendChild(new_label('name_input', 'name'));
         workshop_form.appendChild(new_input_element('name_input'));
+        workshop_form.appendChild(new_label('new_workshop_title', 'I want to learn'));
         workshop_form.appendChild(new_input_element('new_workshop_title'));
+        workshop_form.appendChild(doc.createElement('br'));
+        workshop_form.appendChild(new_label('new_workshop_details', 'more details'));
         workshop_form.appendChild(new_input_element('new_workshop_details'));
+        workshop_form.appendChild(doc.createElement('br'));
         workshop_form.appendChild(submit_button);
 
         return workshop_form;
