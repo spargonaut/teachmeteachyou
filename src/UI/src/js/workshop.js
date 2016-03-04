@@ -5,6 +5,14 @@ var workshop = {
         var workshop_form = doc.createElement('div');
         workshop_form.classList.add('workshop');
 
+        var name_input = doc.createElement('input');
+        name_input.setAttribute('id', 'name_input');
+        name_input.setAttribute('type', 'text');
+        name_input.setAttribute('name', 'first_name');
+        name_input.setAttribute('title', 'first_name_want_to_learn');
+
+        workshop_form.appendChild(name_input);
+
         return workshop_form;
     },
 
