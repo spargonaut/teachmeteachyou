@@ -11,7 +11,14 @@ var workshop = {
         name_input.setAttribute('name', 'first_name');
         name_input.setAttribute('title', 'first_name_want_to_learn');
 
+        var workshop_title_input = doc.createElement('input');
+        workshop_title_input.setAttribute('id', 'new_workshop_details');
+        workshop_title_input.setAttribute('type', 'text');
+        workshop_title_input.setAttribute('name', 'new_workshop_details');
+        workshop_title_input.setAttribute('title', 'new_workshop_details');
+
         workshop_form.appendChild(name_input);
+        workshop_form.appendChild(workshop_title_input);
 
         return workshop_form;
     },
