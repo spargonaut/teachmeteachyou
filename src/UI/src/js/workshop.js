@@ -11,11 +11,17 @@ var workshop = {
             return input_element;
         };
 
+        var submit_button = doc.createElement('button');
+        submit_button.setAttribute('id', 'workshop_submit');
+        submit_button.setAttribute('type', 'button');
+        submit_button.setAttribute('onClick', 'createWorkshop()');
+
         var workshop_form = doc.createElement('div');
         workshop_form.classList.add('workshop');
         workshop_form.appendChild(new_input_element('name_input'));
         workshop_form.appendChild(new_input_element('new_workshop_title'));
         workshop_form.appendChild(new_input_element('new_workshop_details'));
+        workshop_form.appendChild(submit_button);
 
         return workshop_form;
     },

@@ -54,4 +54,17 @@ describe ('Workshop', function () {
         workshop_details_input.getAttribute('name').should.eql('new_workshop_details');
         workshop_details_input.getAttribute('title').should.eql('new_workshop_details');
     });
+
+    it ('should have a submit button', function () {
+        var stubbed_body = '<body onload="load_page()"></body>';
+        var doc = jsdom(stubbed_body);
+
+        var workshop_form = workshop.show_form(doc);
+
+        var submit_button = workshop_form.getElementsByTagName('button')[0];
+
+        submit_button.getAttribute('id').should.eql('workshop_submit');
+        submit_button.getAttribute('type').should.eql('button');
+        submit_button.getAttribute('onClick').should.eql('createWorkshop()');
+    });
 });
