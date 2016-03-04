@@ -14,3 +14,31 @@ initial install of grunt/npm stuff via gradle (via initial import of the project
 
 fix:
 not stopping all the tests when a build step fails (in run all tests)
+
+- workshop entry should be hidden initially
+-- click a link/button to expose the workshop
+-- click 'add workshop' to create the workshop (then hide the form)
+-- click 'cancel' to hide the form
+
+- should load all workshops on initial page load
+-- should show the workshop name and number of people interested in the same workshop
+
+- user can click a workshop and see the details of the workshop
+-- should show the name of the workshop
+-- should show the workshop creator
+-- should show the other details of the workshop
+-- should show the date created?
+-- should show the number of people intersted
+-- should show the list of people interested
+
+- user can add their name as being interested in a workshop
+-- should be able to add further details to the workshop
+
+- user can add their name as being able to teach the subject
+
+stretch:
+- user creating workshop can indicate what days are best for them
+- user showing interest in a workshop can indicate what days are best for them
+- user able to teach can indicate what days are best for them
+- user able to teach can indicate the minimum number of students required before teaching
+- system will alert all users interested in the workshop that a teach has been found

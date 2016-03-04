@@ -1,6 +1,13 @@
 var jquery = require('jquery');
 
 var workshop = {
+    show_form : function (doc) {
+        var workshop_form = doc.createElement('div');
+        workshop_form.classList.add('workshop');
+
+        return workshop_form;
+    },
+
     addWorkshop : function () {
         return function (data) {
             console.log("sample of data: ", data);
