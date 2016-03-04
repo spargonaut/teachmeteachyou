@@ -8,8 +8,8 @@ var workshop = {
         var name_input = doc.createElement('input');
         name_input.setAttribute('id', 'name_input');
         name_input.setAttribute('type', 'text');
-        name_input.setAttribute('name', 'first_name');
-        name_input.setAttribute('title', 'first_name_want_to_learn');
+        name_input.setAttribute('name', 'name_input');
+        name_input.setAttribute('title', 'name_input');
 
         var workshop_title_input = doc.createElement('input');
         workshop_title_input.setAttribute('id', 'new_workshop_details');

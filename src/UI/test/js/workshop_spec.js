@@ -23,8 +23,8 @@ describe ('Workshop', function () {
 
         name_input.getAttribute('id').should.eql('name_input');
         name_input.getAttribute('type').should.eql('text');
-        name_input.getAttribute('name').should.eql('first_name');
-        name_input.getAttribute('title').should.eql('first_name_want_to_learn')
+        name_input.getAttribute('name').should.eql('name_input');
+        name_input.getAttribute('title').should.eql('name_input')
     });
 
     it ('should have a new workshop title input field', function () {
