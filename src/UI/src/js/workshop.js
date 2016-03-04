@@ -14,6 +14,7 @@ var workshop = {
         var workshop_form = doc.createElement('div');
         workshop_form.classList.add('workshop');
         workshop_form.appendChild(new_input_element('name_input'));
+        workshop_form.appendChild(new_input_element('new_workshop_title'));
         workshop_form.appendChild(new_input_element('new_workshop_details'));
 
         return workshop_form;

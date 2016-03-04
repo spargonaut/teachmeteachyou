@@ -35,9 +35,23 @@ describe ('Workshop', function () {
 
         var workshop_title_input = workshop_form.getElementsByTagName('input')[1]
 
-        workshop_title_input.getAttribute('id').should.eql('new_workshop_details');
+        workshop_title_input.getAttribute('id').should.eql('new_workshop_title');
         workshop_title_input.getAttribute('type').should.eql('text');
-        workshop_title_input.getAttribute('name').should.eql('new_workshop_details');
-        workshop_title_input.getAttribute('title').should.eql('new_workshop_details');
+        workshop_title_input.getAttribute('name').should.eql('new_workshop_title');
+        workshop_title_input.getAttribute('title').should.eql('new_workshop_title');
+    });
+
+    it ('should have a workshop details field', function () {
+        var stubbed_body = '<body onload="load_page()"></body>';
+        var doc = jsdom(stubbed_body);
+
+        var workshop_form = workshop.show_form(doc);
+
+        var workshop_details_input = workshop_form.getElementsByTagName('input')[2]
+
+        workshop_details_input.getAttribute('id').should.eql('new_workshop_details');
+        workshop_details_input.getAttribute('type').should.eql('text');
+        workshop_details_input.getAttribute('name').should.eql('new_workshop_details');
+        workshop_details_input.getAttribute('title').should.eql('new_workshop_details');
     });
 });
