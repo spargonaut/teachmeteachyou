@@ -4,7 +4,7 @@ var should = require('should');
 var workshop = require('../../src/js/workshop');
 
 describe ('Workshop', function () {
-    it ('sohuld create a workshop form', function () {
+    it ('should create a workshop form', function () {
         var stubbed_body = '<body onload="load_page()"></body>';
         var doc = jsdom(stubbed_body);
 
@@ -38,6 +38,6 @@ describe ('Workshop', function () {
         workshop_title_input.getAttribute('id').should.eql('new_workshop_details');
         workshop_title_input.getAttribute('type').should.eql('text');
         workshop_title_input.getAttribute('name').should.eql('new_workshop_details');
-        workshop_title_input.getAttribute('title').should.eql('new_workshop_details')
+        workshop_title_input.getAttribute('title').should.eql('new_workshop_details');
     });
 });

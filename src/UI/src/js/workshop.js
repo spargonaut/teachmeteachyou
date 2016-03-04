@@ -2,23 +2,19 @@ var jquery = require('jquery');
 
 var workshop = {
     show_form : function (doc) {
+        var new_input_element = function (name) {
+            var input_element = doc.createElement('input');
+            input_element.setAttribute('id', name);
+            input_element.setAttribute('type', 'text');
+            input_element.setAttribute('name', name);
+            input_element.setAttribute('title', name);
+            return input_element;
+        };
+
         var workshop_form = doc.createElement('div');
         workshop_form.classList.add('workshop');
-
-        var name_input = doc.createElement('input');
-        name_input.setAttribute('id', 'name_input');
-        name_input.setAttribute('type', 'text');
-        name_input.setAttribute('name', 'name_input');
-        name_input.setAttribute('title', 'name_input');
-
-        var workshop_title_input = doc.createElement('input');
-        workshop_title_input.setAttribute('id', 'new_workshop_details');
-        workshop_title_input.setAttribute('type', 'text');
-        workshop_title_input.setAttribute('name', 'new_workshop_details');
-        workshop_title_input.setAttribute('title', 'new_workshop_details');
-
-        workshop_form.appendChild(name_input);
-        workshop_form.appendChild(workshop_title_input);
+        workshop_form.appendChild(new_input_element('name_input'));
+        workshop_form.appendChild(new_input_element('new_workshop_details'));
 
         return workshop_form;
     },
