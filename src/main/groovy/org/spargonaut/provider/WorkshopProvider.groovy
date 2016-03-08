@@ -1,6 +1,6 @@
 package org.spargonaut.provider
 
-import static groovy.json.JsonOutput.toJson
+import org.spargonaut.model.Workshop
 
 import com.google.inject.Inject
 import org.spargonaut.dao.WorkshopDao
@@ -10,9 +10,10 @@ class WorkshopProvider {
     @Inject
     WorkshopDao workshopDao
 
-    Map newWorkshopWith(final workshopInfo) {
-        workshopInfo.workshopId = UUID.randomUUID().toString()
-        workshopDao.insert(toJson(workshopInfo))
-        workshopDao.getWorkshopById(workshopInfo.workshopId)
+    Workshop newWorkshopWith(final workshopInfo) {
+        UUID workshopId = UUID.randomUUID()
+        Workshop workshop = new Workshop(workshopInfo.name, workshopId, workshopInfo.title, workshopInfo.details)
+        workshopDao.insert(workshop)
+        workshopDao.getWorkshopById(workshop.id.toString())
     }
 }

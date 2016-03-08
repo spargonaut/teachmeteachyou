@@ -54,9 +54,9 @@ var workshop = {
             workshop.classList.add('workshop');
 
             workshop.appendChild(newSpan('name_display', data.name));
-            workshop.appendChild(newSpan('workshop_title', data.workshop_title));
+            workshop.appendChild(newSpan('workshop_title', data.title));
             workshop.appendChild(document.createElement('br'));
-            workshop.appendChild(newSpan('workshop_details', data.workshop_details));
+            workshop.appendChild(newSpan('workshop_details', data.details));
 
             jquery('#workshops').append(workshop);
         };
@@ -69,8 +69,8 @@ var workshop = {
 
         var payload = {
             name : name,
-            workshop_title: new_workshop_title,
-            workshop_details: new_workshop_details
+            title: new_workshop_title,
+            details: new_workshop_details
         };
 
         var createWorkshopPromise = this.addWorkshop();

@@ -2,6 +2,8 @@ package org.spargonaut.dao
 
 import static groovy.json.JsonOutput.toJson
 
+import org.spargonaut.model.Workshop
+
 import org.skife.jdbi.v2.DBI
 import org.skife.jdbi.v2.Handle
 import org.skife.jdbi.v2.TransactionCallback
@@ -63,15 +65,13 @@ class WorkshopDaoTest extends Specification {
 
     private void 'should add a new workshop and be able to get it by ID'() {
         setup:
-        String workshopId = UUID.randomUUID().toString()
-        workshopDAO.insert(toJson([workshopId:workshopId,
-                                   name:"jane doe",
-                                   workshop_title:"something to do"]))
+        UUID workshopId = UUID.randomUUID()
+        Workshop workshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
+        workshopDAO.insert(workshop)
+
+        Workshop expectedWorkshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
 
         expect:
-        Map expectedWorkshop = [workshopId:workshopId,
-                                name:"jane doe",
-                                workshop_title:"something to do"]
-        workshopDAO.getWorkshopById(workshopId) == expectedWorkshop
+        workshopDAO.getWorkshopById(workshopId.toString()) == expectedWorkshop
     }
 }

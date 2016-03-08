@@ -1,6 +1,7 @@
 package org.spargonaut.resource
 
 import com.google.inject.Inject
+import org.spargonaut.model.Workshop
 import org.spargonaut.provider.WorkshopProvider
 
 import javax.ws.rs.Consumes
@@ -20,7 +21,7 @@ class WorkshopResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     Response newWorkshopWith(info) {
-        Map workshop = workshopProvider.newWorkshopWith(info)
+        Workshop workshop = workshopProvider.newWorkshopWith(info)
         Response
             .created()
             .entity(workshop)
