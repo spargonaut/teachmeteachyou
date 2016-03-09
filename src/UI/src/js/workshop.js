@@ -77,7 +77,7 @@ var workshop = {
 
         jquery.ajax({
             method: "POST",
-            url: 'http://localhost:8080/wants/workshop',
+            url: 'http://localhost:8080/wants/workshops',
             data: JSON.stringify(payload),
             dataType: 'json',
             contentType: "application/json"

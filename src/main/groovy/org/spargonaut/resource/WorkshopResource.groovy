@@ -11,7 +11,7 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
-@Path('workshop')
+@Path('workshops')
 @Produces(MediaType.APPLICATION_JSON)
 class WorkshopResource {
 
@@ -23,7 +23,7 @@ class WorkshopResource {
     Response newWorkshopWith(info) {
         Workshop workshop = workshopProvider.newWorkshopWith(info)
         Response
-            .created()
+            .created(new URI(workshop.id.toString()))
             .entity(workshop)
             .build()
     }
