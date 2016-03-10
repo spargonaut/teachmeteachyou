@@ -15,4 +15,7 @@ public interface WorkshopDao {
 
     @SqlQuery("select * from workshop where value->>'id'=:id")
     Workshop getWorkshopById(@Bind('id') final String id)
+
+    @SqlQuery('select * from workshop')
+    List<Workshop> getAll()
 }

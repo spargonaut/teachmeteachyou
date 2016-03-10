@@ -16,4 +16,8 @@ class WorkshopProvider {
         workshopDao.insert(workshop)
         workshopDao.getWorkshopById(workshop.id.toString())
     }
+
+    List<Workshop> getAll() {
+        workshopDao.getAll()
+    }
 }
