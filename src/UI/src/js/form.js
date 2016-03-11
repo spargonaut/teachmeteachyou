@@ -41,27 +41,29 @@ var form = {
     },
 
     create : function (doc) {
-            var name = jquery('#name_input').val();
-            var new_workshop_title = jquery('#new_workshop_title').val();
-            var new_workshop_details = jquery('#new_workshop_details').val();
+        var name = jquery('#name_input').val();
+        var new_workshop_title = jquery('#new_workshop_title').val();
+        var new_workshop_details = jquery('#new_workshop_details').val();
 
-            var payload = {
-                name : name,
-                title: new_workshop_title,
-                details: new_workshop_details
-            };
+        var payload = {
+            name : name,
+            title: new_workshop_title,
+            details: new_workshop_details
+        };
 
-            var createWorkshopPromise = workshop.getAllWorkshops();
+        var createWorkshopPromise = function () {
+            return workshop.getAllWorkshops();
+        };
 
-            jquery.ajax({
-                method: "POST",
-                url: 'http://localhost:8080/wants/workshops',
-                data: JSON.stringify(payload),
-                dataType: 'json',
-                contentType: "application/json"
-            }).done(createWorkshopPromise);
+        jquery.ajax({
+            method: "POST",
+            url: 'http://localhost:8080/wants/workshops',
+            data: JSON.stringify(payload),
+            dataType: 'json',
+            contentType: "application/json"
+        }).done(createWorkshopPromise);
 
-        },
+    }
 }
 
 module.exports = form;

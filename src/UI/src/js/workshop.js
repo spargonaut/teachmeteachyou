@@ -3,12 +3,10 @@ var jquery = require('jquery');
 var workshop = {
     getAllWorkshops : function () {
         var workshopLoader = this.displayWorkshops();
-        return function () {
-            jquery.ajax({
-                method: "GET",
-                url: 'http://localhost:8080/wants/workshops'
-            }).done(workshopLoader)
-        }
+        jquery.ajax({
+            method: "GET",
+            url: 'http://localhost:8080/wants/workshops'
+        }).done(workshopLoader);
     },
 
     displayWorkshops : function () {
@@ -23,7 +21,7 @@ var workshop = {
             }
 
             var workshops  = document.createElement('div');
-            workshops.classList.add('workshop');
+            workshops.setAttribute('id', 'workshops');
 
             for (var i = 0; i < data.workshops.length; i++) {
                 console.log('building workshop');
@@ -37,7 +35,7 @@ var workshop = {
 
                 workshops.appendChild(workshop);
             }
-            jquery('#workshops').append(workshops);
+            jquery('#workshops').replaceWith(workshops);
         };
     }
 }
