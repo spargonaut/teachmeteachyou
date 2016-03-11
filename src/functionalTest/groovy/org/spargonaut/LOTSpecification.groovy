@@ -35,7 +35,7 @@ class LOTSpecification extends Specification {
         driver.findElement(By.id('workshop_submit')).click()
 
         then:
-        int maxTimeToWaitForElement = 1
+        int maxTimeToWaitForElement = 2
         WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('name_display'), userName))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('workshop_title'), workshopName))

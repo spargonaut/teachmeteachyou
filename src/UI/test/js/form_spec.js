@@ -1,14 +1,14 @@
 var jsdom = require('jsdom').jsdom;
 var should = require('should');
 
-var workshop = require('../../src/js/workshop');
+var form = require('../../src/js/form.js');
 
 describe ('Workshop', function () {
     it ('should create a workshop form', function () {
         var stubbed_body = '<body onload="load_page()"></body>';
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = workshop.show_form(doc);
+        var workshop_form = form.show(doc);
 
         workshop_form.className.should.eql('workshop');
     });
@@ -17,7 +17,7 @@ describe ('Workshop', function () {
         var stubbed_body = '<body onload="load_page()"></body>';
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = workshop.show_form(doc);
+        var workshop_form = form.show(doc);
 
         var name_input = workshop_form.getElementsByTagName('input')[0];
 
@@ -31,7 +31,7 @@ describe ('Workshop', function () {
         var stubbed_body = '<body onload="load_page()"></body>';
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = workshop.show_form(doc);
+        var workshop_form = form.show(doc);
 
         var workshop_title_input = workshop_form.getElementsByTagName('input')[1]
 
@@ -45,7 +45,7 @@ describe ('Workshop', function () {
         var stubbed_body = '<body onload="load_page()"></body>';
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = workshop.show_form(doc);
+        var workshop_form = form.show(doc);
 
         var workshop_details_input = workshop_form.getElementsByTagName('input')[2]
 
@@ -59,7 +59,7 @@ describe ('Workshop', function () {
         var stubbed_body = '<body onload="load_page()"></body>';
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = workshop.show_form(doc);
+        var workshop_form = form.show(doc);
 
         var submit_button = workshop_form.getElementsByTagName('button')[0];
 

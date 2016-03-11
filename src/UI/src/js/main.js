@@ -1,8 +1,8 @@
-var workshop = require('./workshop.js');
+var form = require('./form.js');
 
 load_page = function () {
     var body = document.getElementsByTagName('body')[0];
-    body.appendChild(workshop.show_form(document));
+    body.appendChild(form.show(document));
 
     var workshops = document.createElement('div');
     workshops.setAttribute('id', 'workshops');
@@ -10,5 +10,5 @@ load_page = function () {
 }
 
 createWorkshop = function () {
-    workshop.newWorkshop(document);
+    form.create(document);
 }
