@@ -5,7 +5,7 @@ var workshop = {
         var workshopLoader = this.displayWorkshops();
         jquery.ajax({
             method: "GET",
-            url: 'http://localhost:8080/wants/workshops'
+            url: 'http://localhost:8080/api/workshops'
         }).done(workshopLoader);
     },
 

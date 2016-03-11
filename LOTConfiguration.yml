@@ -13,4 +13,4 @@ dataSourceFactory:
   evictionInterval: 10s
   minIdleTime: 1 minute
 server:
-  rootPath: /wants/
+  rootPath: /api/
