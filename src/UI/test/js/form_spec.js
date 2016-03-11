@@ -10,7 +10,7 @@ describe ('Workshop', function () {
 
         var workshop_form = form.show(doc);
 
-        workshop_form.className.should.eql('workshop');
+        workshop_form.className.should.eql('workshop_form');
     });
 
     it ('should have a name input field in the workshop form', function () {

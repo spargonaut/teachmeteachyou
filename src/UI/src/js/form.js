@@ -26,7 +26,7 @@ var form = {
         submit_button.textContent = 'Create Workshop';
 
         var workshop_form = doc.createElement('div');
-        workshop_form.classList.add('workshop');
+        workshop_form.classList.add('workshop_form');
         workshop_form.appendChild(new_label('name_input', 'name'));
         workshop_form.appendChild(new_input_element('name_input'));
         workshop_form.appendChild(new_label('new_workshop_title', 'I want to learn'));
