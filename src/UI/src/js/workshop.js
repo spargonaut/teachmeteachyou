@@ -29,9 +29,10 @@ var workshop = {
                 workshop.classList.add('workshop');
 
                 workshop.appendChild(newSpan('name_display', data.workshops[i].name));
+                var spacer = document.createElement('span');
+                spacer.textContent = "wants to learn";
+                workshop.appendChild(spacer);
                 workshop.appendChild(newSpan('workshop_title', data.workshops[i].title));
-                workshop.appendChild(document.createElement('br'));
-                workshop.appendChild(newSpan('workshop_details', data.workshops[i].details));
 
                 workshops.appendChild(workshop);
             }

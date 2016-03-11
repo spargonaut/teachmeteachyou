@@ -39,6 +39,5 @@ class LOTSpecification extends Specification {
         WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('name_display'), userName))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('workshop_title'), workshopName))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('workshop_details'), workshopDtls))
     }
 }
