@@ -50,7 +50,7 @@ var form = {
         hide_form_button.setAttribute('id', 'hide_form_button');
         hide_form_button.setAttribute('type', 'button');
         hide_form_button.setAttribute('onClick', 'hide_workshop_form()');
-        hide_form_button.textContent = 'Hide Form';
+        hide_form_button.textContent = 'Cancel';
 
 
         var workshop_form = doc.createElement('div');
