@@ -4,8 +4,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('default', ['clean', 'mochaTest', 'copy', 'browserify']);
+    grunt.registerTask('go', ['clean', 'copy', 'browserify', 'connect']);
 
     grunt.initConfig({
         mochaTest: {
@@ -36,6 +38,16 @@ module.exports = function (grunt) {
             main: {
                 src: 'src/js/*.js',
                 dest: 'dist/js/bundle.js'
+            }
+        },
+
+        connect : {
+            server : {
+                options : {
+                    port : 9000,
+                    keepalive : true,
+                    base : 'dist'
+                }
             }
         },
 
