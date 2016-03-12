@@ -19,6 +19,8 @@ class LOTSpecification extends Specification {
         given:
         driver.get 'localhost:8080'
 
+        driver.findElement(By.id('workshop_form_button')).click();
+
         WebElement nameInput = driver.findElement(By.id('name_input'))
         String userName = 'aloicious abercrombie'
         nameInput.sendKeys(userName)

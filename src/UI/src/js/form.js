@@ -2,7 +2,28 @@ var jquery = require('jquery');
 var workshop = require('./workshop');
 
 var form = {
-    show : function (doc) {
+
+    show_button : function (doc) {
+
+        var submit_button = doc.createElement('button');
+        submit_button.setAttribute('id', 'workshop_form_button');
+        submit_button.setAttribute('type', 'button');
+        submit_button.setAttribute('onClick', 'show_workshop_form()');
+        submit_button.textContent = 'Create Workshop';
+
+        return submit_button;
+    },
+
+    hide_form : function (doc) {
+        var show_form_button = this.show_button(doc);
+
+        var workshops = doc.getElementById('workshops');
+        workshops.parentNode.insertBefore(show_form_button, workshops);
+        var workshop_form = doc.getElementById('workshop_form');
+        workshops.parentNode.removeChild(workshop_form);
+    },
+
+    show_form : function (doc) {
         var new_input_element = function (name) {
             var input_element = doc.createElement('input');
             input_element.setAttribute('id', name);
@@ -23,10 +44,17 @@ var form = {
         submit_button.setAttribute('id', 'workshop_submit');
         submit_button.setAttribute('type', 'button');
         submit_button.setAttribute('onClick', 'createWorkshop()');
-        submit_button.textContent = 'Create Workshop';
+        submit_button.textContent = 'Create';
+
+        var hide_form_button = doc.createElement('button');
+        hide_form_button.setAttribute('id', 'hide_form_button');
+        hide_form_button.setAttribute('type', 'button');
+        hide_form_button.setAttribute('onClick', 'hide_workshop_form()');
+        hide_form_button.textContent = 'Hide Form';
+
 
         var workshop_form = doc.createElement('div');
-        workshop_form.classList.add('workshop_form');
+        workshop_form.setAttribute('id', 'workshop_form');
         workshop_form.appendChild(new_label('name_input', 'name'));
         workshop_form.appendChild(new_input_element('name_input'));
         workshop_form.appendChild(new_label('new_workshop_title', 'I want to learn'));
@@ -36,8 +64,12 @@ var form = {
         workshop_form.appendChild(new_input_element('new_workshop_details'));
         workshop_form.appendChild(doc.createElement('br'));
         workshop_form.appendChild(submit_button);
+        workshop_form.appendChild(hide_form_button);
 
-        return workshop_form;
+        var workshops = doc.getElementById('workshops');
+        workshops.parentNode.insertBefore(workshop_form, workshops);
+        var workshop_form_button = doc.getElementById('workshop_form_button');
+        workshops.parentNode.removeChild(workshop_form_button);
     },
 
     create : function (doc) {

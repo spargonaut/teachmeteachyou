@@ -4,67 +4,39 @@ var should = require('should');
 var form = require('../../src/js/form.js');
 
 describe ('Workshop', function () {
-    it ('should create a workshop form', function () {
-        var stubbed_body = '<body onload="load_page()"></body>';
+    it ('should replace the show workshop form button with the workshop form', function () {
+        var stubbed_body = '<body onload="load_page()">' +
+            '<button onclick="show_workshop_form()" type="button" id="workshop_form_button">' +
+                'Create Workshop' +
+            '</button>' +
+            '<div id="workshops"></div>' +
+        '</body>';
+
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = form.show(doc);
+        form.show_form(doc);
 
-        workshop_form.className.should.eql('workshop_form');
+        var workshop_form = doc.getElementById('workshop_form');
+        workshop_form.id.should.eql('workshop_form');
+
+        var show_workshop_button = doc.getElementById('workshop_form_button');
+        should.not.exist(show_workshop_button);
     });
 
-    it ('should have a name input field in the workshop form', function () {
-        var stubbed_body = '<body onload="load_page()"></body>';
+    it ('should replace the workshop form with the show workshop form button', function () {
+        var stubbed_body = '<body onload="load_page()">' +
+            '<div id="workshop_form"></div>' +
+            '<div id="workshops"></div>' +
+        '</body>';
+
         var doc = jsdom(stubbed_body);
 
-        var workshop_form = form.show(doc);
+        form.hide_form(doc);
 
-        var name_input = workshop_form.getElementsByTagName('input')[0];
+        var workshop_form = doc.getElementById('workshop_form');
+        should.not.exist(workshop_form);
 
-        name_input.getAttribute('id').should.eql('name_input');
-        name_input.getAttribute('type').should.eql('text');
-        name_input.getAttribute('name').should.eql('name_input');
-        name_input.getAttribute('title').should.eql('name_input')
-    });
-
-    it ('should have a new workshop title input field', function () {
-        var stubbed_body = '<body onload="load_page()"></body>';
-        var doc = jsdom(stubbed_body);
-
-        var workshop_form = form.show(doc);
-
-        var workshop_title_input = workshop_form.getElementsByTagName('input')[1]
-
-        workshop_title_input.getAttribute('id').should.eql('new_workshop_title');
-        workshop_title_input.getAttribute('type').should.eql('text');
-        workshop_title_input.getAttribute('name').should.eql('new_workshop_title');
-        workshop_title_input.getAttribute('title').should.eql('new_workshop_title');
-    });
-
-    it ('should have a workshop details field', function () {
-        var stubbed_body = '<body onload="load_page()"></body>';
-        var doc = jsdom(stubbed_body);
-
-        var workshop_form = form.show(doc);
-
-        var workshop_details_input = workshop_form.getElementsByTagName('input')[2]
-
-        workshop_details_input.getAttribute('id').should.eql('new_workshop_details');
-        workshop_details_input.getAttribute('type').should.eql('text');
-        workshop_details_input.getAttribute('name').should.eql('new_workshop_details');
-        workshop_details_input.getAttribute('title').should.eql('new_workshop_details');
-    });
-
-    it ('should have a submit button', function () {
-        var stubbed_body = '<body onload="load_page()"></body>';
-        var doc = jsdom(stubbed_body);
-
-        var workshop_form = form.show(doc);
-
-        var submit_button = workshop_form.getElementsByTagName('button')[0];
-
-        submit_button.getAttribute('id').should.eql('workshop_submit');
-        submit_button.getAttribute('type').should.eql('button');
-        submit_button.getAttribute('onClick').should.eql('createWorkshop()');
+        var show_workshop_button = doc.getElementById('workshop_form_button');
+        show_workshop_button.id.should.eql('workshop_form_button');
     });
 });
