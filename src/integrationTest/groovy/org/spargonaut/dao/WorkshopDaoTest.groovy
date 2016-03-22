@@ -63,7 +63,7 @@ class WorkshopDaoTest extends Specification {
         })
     }
 
-    private void 'should add a new workshop and be able to get it by ID'() {
+    void 'should add a new workshop and be able to get it by ID'() {
         setup:
         UUID workshopId = UUID.randomUUID()
         Workshop workshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
