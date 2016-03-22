@@ -23,16 +23,16 @@ class LOTSpecification extends Specification {
     }
 
     void 'a user can create a new workshop request and have that information show up below the submit button'() {
-        given:
+        given: 'some information about a new workshop'
         String userName = 'aloicious abercrombie'
         String workshopName = 'some new workshop'
         String workshopDtls = 'these are some more details'
-        submitWorkshopInformation(userName, workshopName, workshopDtls)
 
-        when:
+        when: 'a user fills in the form with that information and clicks the create button'
+        submitWorkshopInformation(userName, workshopName, workshopDtls)
         driver.findElement(By.id(WORKSHOP_SUBMIT_BUTTON_ID)).click()
 
-        then:
+        then: 'the new workshop shows up in the workshop list'
         int maxTimeToWaitForElement = 2
         WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('name_display'), userName))
@@ -40,10 +40,10 @@ class LOTSpecification extends Specification {
                 ExpectedConditions.textToBePresentInElementLocated(
                         By.className(WORKSHOP_TITLE_CLASSNAME), workshopName))
 
-        when: 'a user wants to view the details of a workshop'
+        when: 'a user clicks on a workshop to view the details of a workshop'
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
-        then:
+        then: 'the details of that workshop are displayed on the page'
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_name'), userName))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_title'), workshopName))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_details'), workshopDtls))
