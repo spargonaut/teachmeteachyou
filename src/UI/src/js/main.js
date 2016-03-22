@@ -23,3 +23,7 @@ show_workshop_form = function () {
 hide_workshop_form = function () {
     form.hide_form(document);
 }
+
+show_workshop_details = function (workshopId) {
+    workshop.get_details(workshopId);
+}

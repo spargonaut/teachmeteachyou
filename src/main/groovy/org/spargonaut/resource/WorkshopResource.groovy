@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes
 import javax.ws.rs.GET
 import javax.ws.rs.POST
 import javax.ws.rs.Path
+import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
@@ -33,5 +34,12 @@ class WorkshopResource {
     @Produces(MediaType.APPLICATION_JSON)
     Map getWorkshops() {
         [workshops:workshopProvider.getAll() ]
+    }
+
+    @GET
+    @Path('{workshopId}')
+    @Produces(MediaType.APPLICATION_JSON)
+    Workshop getById(@PathParam('workshopId') String workshopId) {
+        workshopProvider.getById(workshopId)
     }
 }

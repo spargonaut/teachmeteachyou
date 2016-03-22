@@ -1,4 +1,5 @@
 var jquery = require('jquery');
+var workshop_details = require('./workshop_details');
 
 var workshop = {
     getAllWorkshops : function () {
@@ -27,6 +28,8 @@ var workshop = {
                 console.log('building workshop');
                 var workshop = document.createElement('div');
                 workshop.classList.add('workshop');
+                var show_workshop_function = 'show_workshop_details("' + data.workshops[i].id + '")'
+                workshop.setAttribute('onClick', show_workshop_function);
 
                 workshop.appendChild(newSpan('name_display', data.workshops[i].name));
                 var spacer = document.createElement('span');
@@ -38,6 +41,14 @@ var workshop = {
             }
             jquery('#workshops').replaceWith(workshops);
         };
+    },
+
+    get_details : function (workshopId) {
+        var show_workshop_details = workshop_details.show();
+        jquery.ajax({
+            method: "GET",
+            url: 'http://localhost:8080/api/workshops/' + workshopId
+        }).done(show_workshop_details);
     }
 }
 module.exports = workshop;

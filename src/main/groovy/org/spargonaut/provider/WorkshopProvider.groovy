@@ -20,4 +20,8 @@ class WorkshopProvider {
     List<Workshop> getAll() {
         workshopDao.getAll()
     }
+
+    Workshop getById(final workshopId) {
+        workshopDao.getWorkshopById(workshopId)
+    }
 }

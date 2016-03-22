@@ -10,36 +10,54 @@ import spock.lang.Specification
 
 class LOTSpecification extends Specification {
 
+    private static final String WORKSHOP_SUBMIT_BUTTON_ID = 'workshop_submit'
+    private static final String WORKSHOP_TITLE_CLASSNAME = 'workshop_title'
+
     WebDriver driver = new FirefoxDriver()
+    void setup() {
+        driver.get 'localhost:8080'
+    }
+
     void cleanup() {
         driver.quit()
     }
 
     void 'a user can create a new workshop request and have that information show up below the submit button'() {
         given:
-        driver.get 'localhost:8080'
-
-        driver.findElement(By.id('workshop_form_button')).click();
-
-        WebElement nameInput = driver.findElement(By.id('name_input'))
         String userName = 'aloicious abercrombie'
-        nameInput.sendKeys(userName)
-
-        WebElement newWorkshopInput = driver.findElement(By.id('new_workshop_title'))
         String workshopName = 'some new workshop'
-        newWorkshopInput.sendKeys(workshopName)
-
-        WebElement newWorkshopDetails = driver.findElement(By.id('new_workshop_details'))
         String workshopDtls = 'these are some more details'
-        newWorkshopDetails.sendKeys(workshopDtls)
+        submitWorkshopInformation(userName, workshopName, workshopDtls)
 
         when:
-        driver.findElement(By.id('workshop_submit')).click()
+        driver.findElement(By.id(WORKSHOP_SUBMIT_BUTTON_ID)).click()
 
         then:
         int maxTimeToWaitForElement = 2
         WebDriverWait wait = new WebDriverWait(driver, maxTimeToWaitForElement)
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('name_display'), userName))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('workshop_title'), workshopName))
+        wait.until(
+                ExpectedConditions.textToBePresentInElementLocated(
+                        By.className(WORKSHOP_TITLE_CLASSNAME), workshopName))
+
+        when: 'a user wants to view the details of a workshop'
+        driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
+
+        then:
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_name'), userName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_title'), workshopName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_details'), workshopDtls))
+    }
+
+    private void submitWorkshopInformation(String userName, String workshopName, String workshopDtls) {
+        driver.findElement(By.id('workshop_form_button')).click();
+        WebElement nameInput = driver.findElement(By.id('name_input'))
+        nameInput.sendKeys(userName)
+
+        WebElement newWorkshopInput = driver.findElement(By.id('new_workshop_title'))
+        newWorkshopInput.sendKeys(workshopName)
+
+        WebElement newWorkshopDetails = driver.findElement(By.id('new_workshop_details'))
+        newWorkshopDetails.sendKeys(workshopDtls)
     }
 }
