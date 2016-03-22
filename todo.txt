@@ -7,6 +7,10 @@ think about deduping
 
 new name: TeachMeTeachYou
 
+TODO:
+- need (functional?) test to cover the loading of multiple workshops on the main page.
+
+
 questions:
 should the buildSrc directory be in the application direcotry or the root directory?
 initial install of grunt/npm stuff via gradle (via initial import of the project)
@@ -21,9 +25,9 @@ done - should load all workshops on initial page load
 done-ish -- should show the workshop name and number of people interested in the same workshop
 
 - user can click a workshop and see the details of the workshop
--- should show the name of the workshop
--- should show the workshop creator
--- should show the other details of the workshop
+done -- should show the name of the workshop
+done -- should show the workshop creator
+done -- should show the other details of the workshop
 -- should show the date created?
 -- should show the number of people interested
 -- should show the list of people interested
