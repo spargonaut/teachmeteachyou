@@ -3,7 +3,7 @@ var should = require('should');
 
 var form = require('../../src/js/form.js');
 
-describe ('Workshop', function () {
+describe ('Form', function () {
     it ('should replace the show workshop form button with the workshop form', function () {
         var stubbed_body = '<body onload="load_page()">' +
             '<button onclick="show_workshop_form()" type="button" id="workshop_form_button">' +
