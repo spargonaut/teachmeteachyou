@@ -1,5 +1,5 @@
 var jquery = require('jquery');
-var workshop_details = require('./workshop_details');
+var workshop_details_page = require('./workshop_details_page.js');
 
 var workshop = {
     getAllWorkshops : function () {
@@ -44,11 +44,11 @@ var workshop = {
     },
 
     get_details : function (workshopId) {
-        var show_workshop_details = workshop_details.show();
+        var details = workshop_details_page();
         jquery.ajax({
             method: "GET",
             url: 'http://localhost:8080/api/workshops/' + workshopId
-        }).done(show_workshop_details);
+        }).done(details.show);
     }
 }
 module.exports = workshop;
