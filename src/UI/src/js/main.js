@@ -2,7 +2,10 @@ var form = require('./form.js');
 var workshop = require('./workshop.js');
 
 load_page = function () {
+
     var body = document.getElementsByTagName('body')[0];
+    document.body.innerHTML = "";
+
     body.appendChild(form.show_button(document));
 
     var workshops = document.createElement('div');
