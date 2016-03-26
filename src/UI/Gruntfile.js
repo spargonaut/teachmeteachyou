@@ -5,9 +5,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['clean', 'mochaTest', 'copy', 'browserify']);
-    grunt.registerTask('go', ['clean', 'copy', 'browserify', 'connect']);
+    grunt.registerTask('go', ['connect', 'watch']);
 
     grunt.initConfig({
         mochaTest: {
@@ -45,12 +46,26 @@ module.exports = function (grunt) {
             server : {
                 options : {
                     port : 9000,
-                    keepalive : true,
+                    keepalive : false       ,
                     base : 'dist'
                 }
             }
         },
 
-        clean: ['dist']
+        clean: ['dist'],
+
+        watch: {
+            options: {
+                livereload: true
+            },
+            html: {
+                files: ['src/index.html'],
+                tasks: ['clean', 'copy']
+            },
+            js: {
+                files: ['src/js/**/*.js'],
+                tasks: ['browserify']
+            }
+        }
     });
 };
