@@ -23,7 +23,7 @@ describe ('Form', function () {
         should.not.exist(show_workshop_button);
     });
 
-    it ('should replace the workshop form with the show workshop form button', function () {
+    xit ('should replace the workshop form with the show workshop form button', function () {
         var stubbed_body = '<body onload="load_page()">' +
             '<div id="workshop_form"></div>' +
             '<div id="workshops"></div>' +

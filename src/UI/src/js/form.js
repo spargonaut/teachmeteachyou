@@ -14,12 +14,12 @@ var form = function () {
             return submit_button;
         },
 
-        hide_form : function (doc) {
-            var show_form_button = this.show_button(doc);
+        hide_form : function () {
+            var show_form_button = this.show_button(document);
 
-            var workshops = doc.getElementById('workshops');
+            var workshops = document.getElementById('workshops');
             workshops.parentNode.insertBefore(show_form_button, workshops);
-            var workshop_form = doc.getElementById('workshop_form');
+            var workshop_form = document.getElementById('workshop_form');
             workshops.parentNode.removeChild(workshop_form);
         },
 
@@ -65,7 +65,6 @@ var form = function () {
             workshop_form.appendChild(doc.createElement('br'));
             workshop_form.appendChild(submit_button);
             workshop_form.appendChild(hide_form_button);
-            console.log('using new content')
 
             var workshops = doc.getElementById('workshops');
             workshops.parentNode.insertBefore(workshop_form, workshops);
@@ -88,13 +87,19 @@ var form = function () {
                 return workshop.getAllWorkshops();
             };
 
+            var self = this
+            var form_hider = function () {
+                return self.hide_form();;
+            };
+
             jquery.ajax({
                 method: "POST",
                 url: 'http://localhost:8080/api/workshops',
                 data: JSON.stringify(payload),
                 dataType: 'json',
                 contentType: "application/json"
-            }).done(createWorkshopPromise);
+            }).done(createWorkshopPromise)
+            .then(form_hider);
 
         }
     };
