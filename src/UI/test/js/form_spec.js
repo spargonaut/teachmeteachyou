@@ -14,7 +14,7 @@ describe ('Form', function () {
 
         var doc = jsdom(stubbed_body);
 
-        form.show_form(doc);
+        form().show_form(doc);
 
         var workshop_form = doc.getElementById('workshop_form');
         workshop_form.id.should.eql('workshop_form');
@@ -31,7 +31,7 @@ describe ('Form', function () {
 
         var doc = jsdom(stubbed_body);
 
-        form.hide_form(doc);
+        form().hide_form(doc);
 
         var workshop_form = doc.getElementById('workshop_form');
         should.not.exist(workshop_form);
