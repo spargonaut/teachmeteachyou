@@ -1,5 +1,6 @@
 var form = require('./form.js');
 var workshop = require('./workshop.js');
+var workshop_details = require('./workshop_details_page.js');
 
 load_page = function () {
 
@@ -29,4 +30,8 @@ hide_workshop_form = function () {
 
 show_workshop_details = function (workshopId) {
     workshop().get_details(workshopId);
+}
+
+show_add_interest_fields = function () {
+    workshop_details().add_interest();
 }
