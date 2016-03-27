@@ -84,12 +84,12 @@ var form = function () {
             };
 
             var createWorkshopPromise = function () {
-                return workshop.getAllWorkshops();
+                return workshop().getAllWorkshops();
             };
 
             var self = this
             var form_hider = function () {
-                return self.hide_form();;
+                return self.hide_form();
             };
 
             jquery.ajax({
@@ -100,7 +100,6 @@ var form = function () {
                 contentType: "application/json"
             }).done(createWorkshopPromise)
             .then(form_hider);
-
         }
     };
 }

@@ -12,7 +12,7 @@ load_page = function () {
     workshops.setAttribute('id', 'workshops');
     body.appendChild(workshops);
 
-    workshop.getAllWorkshops();
+    workshop().getAllWorkshops();
 }
 
 createWorkshop = function () {
@@ -28,5 +28,5 @@ hide_workshop_form = function () {
 }
 
 show_workshop_details = function (workshopId) {
-    workshop.get_details(workshopId);
+    workshop().get_details(workshopId);
 }

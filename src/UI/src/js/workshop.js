@@ -1,54 +1,59 @@
 var jquery = require('jquery');
 var workshop_details_page = require('./workshop_details_page.js');
 
-var workshop = {
-    getAllWorkshops : function () {
-        var workshopLoader = this.displayWorkshops();
-        jquery.ajax({
-            method: "GET",
-            url: 'http://localhost:8080/api/workshops'
-        }).done(workshopLoader);
-    },
+var workshop = function () {
+    return {
+        getAllWorkshops : function () {
+            var self = this;
+            var workshopLoader = function (data) {
+                console.log('in workshopLoader');
+                return self.displayWorkshops(data);
+            };
 
-    displayWorkshops : function () {
-        return function (data) {
-            console.log("sample of data: ", data);
+            jquery.ajax({
+                method: "GET",
+                url: 'http://localhost:8080/api/workshops'
+            }).done(workshopLoader);
+        },
 
-            var newSpan = function (className, content) {
-                var element = document.createElement('span');
-                element.setAttribute('class', className);
-                element.textContent = content;
-                return element;
-            }
+        displayWorkshops : function (data) {
+                console.log("sample of data: ", data);
 
-            var workshops  = document.createElement('div');
-            workshops.setAttribute('id', 'workshops');
+                var newSpan = function (className, content) {
+                    var element = document.createElement('span');
+                    element.setAttribute('class', className);
+                    element.textContent = content;
+                    return element;
+                }
 
-            for (var i = 0; i < data.workshops.length; i++) {
-                console.log('building workshop');
-                var workshop = document.createElement('div');
-                workshop.classList.add('workshop');
-                var show_workshop_function = 'show_workshop_details("' + data.workshops[i].id + '")'
-                workshop.setAttribute('onClick', show_workshop_function);
+                var workshops  = document.createElement('div');
+                workshops.setAttribute('id', 'workshops');
 
-                workshop.appendChild(newSpan('name_display', data.workshops[i].name));
-                var spacer = document.createElement('span');
-                spacer.textContent = "wants to learn";
-                workshop.appendChild(spacer);
-                workshop.appendChild(newSpan('workshop_title', data.workshops[i].title));
+                for (var i = 0; i < data.workshops.length; i++) {
+                    console.log('building workshop');
+                    var workshop = document.createElement('div');
+                    workshop.classList.add('workshop');
+                    var show_workshop_function = 'show_workshop_details("' + data.workshops[i].id + '")'
+                    workshop.setAttribute('onClick', show_workshop_function);
 
-                workshops.appendChild(workshop);
-            }
-            jquery('#workshops').replaceWith(workshops);
-        };
-    },
+                    workshop.appendChild(newSpan('name_display', data.workshops[i].name));
+                    var spacer = document.createElement('span');
+                    spacer.textContent = "wants to learn";
+                    workshop.appendChild(spacer);
+                    workshop.appendChild(newSpan('workshop_title', data.workshops[i].title));
 
-    get_details : function (workshopId) {
-        var details = workshop_details_page();
-        jquery.ajax({
-            method: "GET",
-            url: 'http://localhost:8080/api/workshops/' + workshopId
-        }).done(details.show);
-    }
+                    workshops.appendChild(workshop);
+                }
+                jquery('#workshops').replaceWith(workshops);
+        },
+
+        get_details : function (workshopId) {
+            var details = workshop_details_page();
+            jquery.ajax({
+                method: "GET",
+                url: 'http://localhost:8080/api/workshops/' + workshopId
+            }).done(details.show);
+        }
+    };
 }
 module.exports = workshop;
