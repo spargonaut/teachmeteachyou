@@ -16,10 +16,11 @@ should the buildSrc directory be in the application direcotry or the root direct
 initial install of grunt/npm stuff via gradle (via initial import of the project)
 
 
--stretch - workshop form should be hidden initially
--stretch -- click a link/button to expose the workshop
--stretch - click 'add workshop' to create the workshop (then hide the form)
--stretch - click 'cancel' to hide the form
+-done - workshop form should be hidden initially
+-done -- click a link/button to expose the workshop
+-done - click 'add workshop' to create the workshop
+-done - (then hide the form)
+-done - click 'cancel' to hide the form
 
 done - should load all workshops on initial page load
 done-ish -- should show the workshop name and number of people interested in the same workshop

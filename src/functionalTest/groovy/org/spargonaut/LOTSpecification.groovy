@@ -12,8 +12,10 @@ class LOTSpecification extends Specification {
 
     private static final String WORKSHOP_SUBMIT_BUTTON_ID = 'workshop_submit'
     private static final String WORKSHOP_TITLE_CLASSNAME = 'workshop_title'
+    private static final String WORKSHOP_FORM_ID = 'workshop_form'
 
     WebDriver driver = new FirefoxDriver()
+
     void setup() {
         driver.get 'localhost:8080'
     }
@@ -23,12 +25,18 @@ class LOTSpecification extends Specification {
     }
 
     void 'a user can create a new workshop request and have that information show up below the submit button'() {
-        given: 'some information about a new workshop'
+        given: 'a user who wants to create a new workshop'
         String userName = 'aloicious abercrombie'
         String workshopName = 'some new workshop'
         String workshopDtls = 'these are some more details'
 
-        when: 'a user fills in the form with that information and clicks the create button'
+        when: 'the user clicks the create workshop button'
+        driver.findElement(By.id('workshop_form_button')).click();
+
+        then: 'the create workshop form is visible'
+        ExpectedConditions.presenceOfElementLocated(By.id(WORKSHOP_FORM_ID))
+
+        when: 'the user fills in the form with that information and clicks the create button'
         submitWorkshopInformation(userName, workshopName, workshopDtls)
         driver.findElement(By.id(WORKSHOP_SUBMIT_BUTTON_ID)).click()
 
@@ -40,7 +48,11 @@ class LOTSpecification extends Specification {
                 ExpectedConditions.textToBePresentInElementLocated(
                         By.className(WORKSHOP_TITLE_CLASSNAME), workshopName))
 
-        when: 'a user clicks on a workshop to view the details of a workshop'
+        and: 'the workshop form is no longer visible'
+        wait.until(ExpectedConditions.not(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(WORKSHOP_FORM_ID))))
+
+        when: 'the user clicks on a workshop to view the details of a workshop'
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
         then: 'the details of that workshop are displayed on the page'
@@ -50,7 +62,6 @@ class LOTSpecification extends Specification {
     }
 
     private void submitWorkshopInformation(String userName, String workshopName, String workshopDtls) {
-        driver.findElement(By.id('workshop_form_button')).click();
         WebElement nameInput = driver.findElement(By.id('name_input'))
         nameInput.sendKeys(userName)
 
