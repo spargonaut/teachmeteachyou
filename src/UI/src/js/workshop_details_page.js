@@ -31,8 +31,18 @@ var workshop_details_page = function () {
           done_button.setAttribute('type', 'button');
           done_button.addEventListener('click', load_page);
           done_button.textContent = 'Done';
-
           body.appendChild(done_button);
+
+          var add_interest_button = document.createElement('button');
+          add_interest_button.setAttribute('id', 'add_interest_button');
+          add_interest_button.setAttribute('type', 'button');
+          add_interest_button.addEventListener('click', foo);
+          add_interest_button.textContent = 'add me to the list!';
+          body.appendChild(add_interest_button);
+      },
+
+      foo: function () {
+        alert('hi there');
       }
     };
 };

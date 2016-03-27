@@ -6,7 +6,6 @@ var workshop = function () {
         getAllWorkshops : function () {
             var self = this;
             var workshopLoader = function (data) {
-                console.log('in workshopLoader');
                 return self.displayWorkshops(data);
             };
 
@@ -17,8 +16,6 @@ var workshop = function () {
         },
 
         displayWorkshops : function (data) {
-                console.log("sample of data: ", data);
-
                 var newSpan = function (className, content) {
                     var element = document.createElement('span');
                     element.setAttribute('class', className);
@@ -30,7 +27,6 @@ var workshop = function () {
                 workshops.setAttribute('id', 'workshops');
 
                 for (var i = 0; i < data.workshops.length; i++) {
-                    console.log('building workshop');
                     var workshop = document.createElement('div');
                     workshop.classList.add('workshop');
                     var show_workshop_function = 'show_workshop_details("' + data.workshops[i].id + '")'
