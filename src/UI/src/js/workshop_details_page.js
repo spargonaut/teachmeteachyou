@@ -24,9 +24,7 @@ var workshop_details_page = function () {
           details.appendChild(workshop_details);
 
           var body = document.getElementsByTagName('body')[0];
-          while (body.firstChild) {
-              body.removeChild(body.firstChild);
-          }
+          body.textContent = "";
 
           body.appendChild(details);
 
@@ -54,6 +52,10 @@ var workshop_details_page = function () {
           var interested_people = document.createElement('div');
           interested_people.setAttribute('id', 'interested_people');
           body.appendChild(interested_people);
+
+          var interested_people_label = document.createElement('div');
+          interested_people_label.textContent = "These people are interested in this workshop too:";
+          interested_people.appendChild(interested_people_label);
 
           for (let person of data.interestedPeople) {
               var interested_person = document.createElement('div');
