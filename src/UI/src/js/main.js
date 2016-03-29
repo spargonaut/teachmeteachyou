@@ -32,6 +32,6 @@ show_workshop_details = function (workshopId) {
     workshop().get_details(workshopId);
 }
 
-show_add_interest_fields = function () {
+add_interested_person = function () {
     workshop_details().add_interest();
 }

@@ -17,7 +17,7 @@ var workshop_details_page = function () {
           var add_interest_button = document.createElement('button');
           add_interest_button.setAttribute('id', 'add_interest_button');
           add_interest_button.setAttribute('type', 'button');
-          add_interest_button.addEventListener('click', show_add_interest_fields);
+          add_interest_button.addEventListener('click', add_interested_person);
           add_interest_button.textContent = 'add me to the list!';
           body.appendChild(add_interest_button);
 
