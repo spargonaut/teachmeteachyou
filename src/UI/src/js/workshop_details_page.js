@@ -4,6 +4,23 @@ var jquery = require('jquery');
 var workshop_details_page = function () {
     return {
         show: function (data) {
+          var body = document.getElementsByTagName('body')[0];
+          body.textContent = "";
+
+          var add_interest_input = document.createElement('input');
+          add_interest_input.setAttribute('id', 'add_interest_input');
+          add_interest_input.setAttribute('type', 'text');
+          add_interest_input.setAttribute('name', 'add_interest_input');
+          add_interest_input.setAttribute('title', 'add_interest_input');
+          body.appendChild(add_interest_input);
+
+          var add_interest_button = document.createElement('button');
+          add_interest_button.setAttribute('id', 'add_interest_button');
+          add_interest_button.setAttribute('type', 'button');
+          add_interest_button.addEventListener('click', show_add_interest_fields);
+          add_interest_button.textContent = 'add me to the list!';
+          body.appendChild(add_interest_button);
+
           var details = document.createElement('div');
           details.setAttribute('id', data.id);
           details.setAttribute('class', 'workshop_details');
@@ -23,9 +40,6 @@ var workshop_details_page = function () {
           workshop_details.textContent = data.details
           details.appendChild(workshop_details);
 
-          var body = document.getElementsByTagName('body')[0];
-          body.textContent = "";
-
           body.appendChild(details);
 
           var done_button = document.createElement('button');
@@ -34,20 +48,6 @@ var workshop_details_page = function () {
           done_button.addEventListener('click', load_page);
           done_button.textContent = 'Done';
           details.appendChild(done_button);
-
-          var add_interest_input = document.createElement('input');
-          add_interest_input.setAttribute('id', 'add_interest_input');
-          add_interest_input.setAttribute('type', 'text');
-          add_interest_input.setAttribute('name', 'add_interest_input');
-          add_interest_input.setAttribute('title', 'add_interest_input');
-          body.appendChild(add_interest_input);
-
-          var add_interest_button = document.createElement('button');
-          add_interest_button.setAttribute('id', 'add_interest_button');
-          add_interest_button.setAttribute('type', 'button');
-          add_interest_button.addEventListener('click', show_add_interest_fields);
-          add_interest_button.textContent = 'add me to the list!';
-          body.appendChild(add_interest_button);
 
           var interested_people = document.createElement('div');
           interested_people.setAttribute('id', 'interested_people');
