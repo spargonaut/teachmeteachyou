@@ -85,11 +85,13 @@ var workshop_details_page = function () {
       },
 
       update_interested : function (data) {
-        var body = document.getElementsByTagName('body')[0]
+        var interested_people = document.getElementById('interested_people');
+        interested_people.textContent = "";
 
-        var interested_people = document.createElement('div');
-        interested_people.setAttribute('id', 'interested_people')
-        body.appendChild(interested_people);
+        // FIXME - the code in this function is duplicated
+        var interested_people_label = document.createElement('div');
+        interested_people_label.textContent = "These people are interested in this workshop too:";
+        interested_people.appendChild(interested_people_label);
 
         for (let person of data.interestedPeople) {
             var interested_person = document.createElement('div');
