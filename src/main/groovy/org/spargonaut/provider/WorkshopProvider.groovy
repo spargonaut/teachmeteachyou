@@ -24,4 +24,11 @@ class WorkshopProvider {
     Workshop getById(final workshopId) {
         workshopDao.getWorkshopById(workshopId)
     }
+
+    Workshop addInterestedParty(String workshopId, Map addInterestMap) {
+        Workshop workshop = workshopDao.getWorkshopById(workshopId)
+        workshop.addInterestedPerson(addInterestMap.name)
+        workshopDao.update(workshop)
+        workshop
+    }
 }

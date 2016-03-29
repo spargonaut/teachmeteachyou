@@ -42,4 +42,16 @@ class WorkshopResource {
     Workshop getById(@PathParam('workshopId') String workshopId) {
         workshopProvider.getById(workshopId)
     }
+
+    @POST
+    @Path('{workshopId}')
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    Response addInterestedPerson(@PathParam('workshopId') String workshopId, Map addInterestPayload) {
+        Workshop workshop = workshopProvider.addInterestedParty(workshopId, addInterestPayload)
+        Response
+                .created(new URI('stuff'))
+                .entity(workshop)
+                .build()
+    }
 }

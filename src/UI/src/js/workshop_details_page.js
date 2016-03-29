@@ -1,3 +1,4 @@
+"use strict";
 var jquery = require('jquery');
 
 var workshop_details_page = function () {
@@ -34,7 +35,7 @@ var workshop_details_page = function () {
           done_button.setAttribute('type', 'button');
           done_button.addEventListener('click', load_page);
           done_button.textContent = 'Done';
-          workshop_details.appendChild(done_button);
+          details.appendChild(done_button);
 
           var add_interest_input = document.createElement('input');
           add_interest_input.setAttribute('id', 'add_interest_input');
@@ -49,12 +50,50 @@ var workshop_details_page = function () {
           add_interest_button.addEventListener('click', show_add_interest_fields);
           add_interest_button.textContent = 'add me to the list!';
           body.appendChild(add_interest_button);
+
+          var interested_people = document.createElement('div');
+          interested_people.setAttribute('id', 'interested_people');
+          body.appendChild(interested_people);
+
+          for (let person of data.interestedPeople) {
+              var interested_person = document.createElement('div');
+              interested_person.textContent = person;
+              interested_people.appendChild(interested_person);
+          }
       },
 
       add_interest: function (workshopId) {
         var name = jquery('#add_interest_input').val();
         var id = jquery('.workshop_details').attr('id');
-        console.log('foobar', id);
+
+        var payload = {
+            name: name
+        };
+
+        var self = this;
+
+        jquery.ajax({
+            method: 'POST',
+            url: 'http://localhost:8080/api/workshops/' + id,
+            data: JSON.stringify(payload),
+            dataType: 'json',
+            contentType: 'application/json'
+        }).done(self.update_interested);
+
+      },
+
+      update_interested : function (data) {
+        var body = document.getElementsByTagName('body')[0]
+
+        var interested_people = document.createElement('div');
+        interested_people.setAttribute('id', 'interested_people')
+        body.appendChild(interested_people);
+
+        for (let person of data.interestedPeople) {
+            var interested_person = document.createElement('div');
+            interested_person.textContent = person;
+            interested_people.appendChild(interested_person);
+        }
       }
     };
 };

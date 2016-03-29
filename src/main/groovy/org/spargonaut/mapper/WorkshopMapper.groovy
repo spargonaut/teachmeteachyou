@@ -13,6 +13,10 @@ class WorkshopMapper implements ResultSetMapper<Workshop> {
     public Workshop map(final int index, final ResultSet resultSet, final StatementContext statementContext)
             throws SQLException {
         Map map = new JsonSlurper().parseText(resultSet.getObject('value').toString()) as Map
-        new Workshop(map.name, UUID.fromString(map.id), map.title, map.details)
+        Workshop workshop = new Workshop(map.name, UUID.fromString(map.id), map.title, map.details)
+        map.interestedPeople.each {
+            workshop.addInterestedPerson(it)
+        }
+        workshop
     }
 }

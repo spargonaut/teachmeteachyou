@@ -29,9 +29,9 @@ done-ish -- should show the workshop name and number of people interested in the
 done -- should show the name of the workshop
 done -- should show the workshop creator
 done -- should show the other details of the workshop
--- should show the date created?
--- should show the number of people interested
--- should show the list of people interested
+-- should show the date created? -
+- stretch - should show the number of people interested (on workshops page)
+- stretch - should show the list of people interested (on details page)
 
 - user can add their name as being interested in a workshop
 -- should be able to add further details to the workshop

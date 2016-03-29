@@ -1,6 +1,7 @@
 package org.spargonaut.dao
 
 import org.skife.jdbi.v2.sqlobject.Bind
+import org.skife.jdbi.v2.sqlobject.BindBean
 import org.skife.jdbi.v2.sqlobject.SqlQuery
 import org.skife.jdbi.v2.sqlobject.SqlUpdate
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper
@@ -18,4 +19,7 @@ public interface WorkshopDao {
 
     @SqlQuery('select * from workshop')
     List<Workshop> getAll()
+
+    @SqlUpdate("update workshop set value = (CAST (:value as jsonb)) where value->>'id' = (CAST (:shop.id as text))")
+    int update(@BindBean('shop') @BindModel final Workshop value)
 }

@@ -74,4 +74,22 @@ class WorkshopDaoTest extends Specification {
         expect:
         workshopDAO.getWorkshopById(workshopId.toString()) == expectedWorkshop
     }
+
+    void 'should update a new workshop and get the updated information by the workshop ID'() {
+        setup:
+        UUID workshopId = UUID.randomUUID()
+        Workshop originalWorkshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
+        workshopDAO.insert(originalWorkshop)
+        Workshop updatedWorkshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
+        updatedWorkshop.addInterestedPerson('billy joe')
+        updatedWorkshop.addInterestedPerson('mike smith')
+        workshopDAO.update(updatedWorkshop)
+
+        Workshop expectedWorkshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
+        expectedWorkshop.addInterestedPerson('billy joe')
+        expectedWorkshop.addInterestedPerson('mike smith')
+
+        expect:
+        workshopDAO.getWorkshopById(workshopId.toString()) == expectedWorkshop
+    }
 }
