@@ -75,7 +75,7 @@ var workshop_details_page = function () {
         var self = this;
 
         jquery.ajax({
-            method: 'POST',
+            method: 'PATCH',
             url: 'http://localhost:8080/api/workshops/' + id,
             data: JSON.stringify(payload),
             dataType: 'json',

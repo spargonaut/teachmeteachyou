@@ -1,6 +1,7 @@
 package org.spargonaut.resource
 
 import com.google.inject.Inject
+import io.dropwizard.jersey.PATCH
 import org.spargonaut.model.Workshop
 import org.spargonaut.provider.WorkshopProvider
 
@@ -43,7 +44,7 @@ class WorkshopResource {
         workshopProvider.getById(workshopId)
     }
 
-    @POST
+    @PATCH
     @Path('{workshopId}')
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
