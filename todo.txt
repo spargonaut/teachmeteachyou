@@ -36,7 +36,7 @@ done -- should show the other details of the workshop
 - user can add their name as being interested in a workshop
 -- should be able to add further details to the workshop
 
-- user can add their name as being able to teach the subject
+done - user can add their name as being able to teach the subject
 
 stretch:
 - user creating workshop can indicate what days are best for them

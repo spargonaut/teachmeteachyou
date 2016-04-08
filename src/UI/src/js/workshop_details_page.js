@@ -21,6 +21,20 @@ var workshop_details_page = function () {
           add_interest_button.textContent = 'add me to the list!';
           body.appendChild(add_interest_button);
 
+          var add_teacher_input = document.createElement('input');
+          add_teacher_input.setAttribute('id', 'add_teacher_input');
+          add_teacher_input.setAttribute('type', 'text');
+          add_teacher_input.setAttribute('name', 'add_teacher_input');
+          add_teacher_input.setAttribute('title', 'add_teacher_input');
+          body.appendChild(add_teacher_input);
+
+          var add_teacher_button = document.createElement('button');
+          add_teacher_button.setAttribute('id', 'add_teacher_button');
+          add_teacher_button.setAttribute('type', 'button');
+          add_teacher_button.addEventListener('click', add_teacher_to_workshop(data.id));
+          add_teacher_button.textContent = 'I can teach that!';
+          body.appendChild(add_teacher_button);
+
           var details = document.createElement('div');
           details.setAttribute('id', data.id);
           details.setAttribute('class', 'workshop_details');
@@ -37,7 +51,7 @@ var workshop_details_page = function () {
 
           var workshop_details = document.createElement('div');
           workshop_details.setAttribute('id', 'workshop_details_details');
-          workshop_details.textContent = data.details
+          workshop_details.textContent = data.details;
           details.appendChild(workshop_details);
 
           body.appendChild(details);
@@ -48,6 +62,22 @@ var workshop_details_page = function () {
           done_button.addEventListener('click', load_page);
           done_button.textContent = 'Done';
           details.appendChild(done_button);
+
+
+          if (data.instructor) {
+            var instructor_name = document.createElement('span');
+            instructor_name.setAttribute('id', 'teacher_name');
+            instructor_name.textContent = data.instructor;
+
+            var instructor_label = document.createElement('span');
+            instructor_label.textContent = " has signed up to teach this workshop";
+
+            var instructor_section = document.createElement('div');
+            instructor_section.setAttribute('class', 'instructor');
+            instructor_section.appendChild(instructor_name);
+            instructor_section.appendChild(instructor_label);
+            details.appendChild(instructor_section)
+          }
 
           var interested_people = document.createElement('div');
           interested_people.setAttribute('id', 'interested_people');
@@ -98,6 +128,43 @@ var workshop_details_page = function () {
             interested_person.textContent = person;
             interested_people.appendChild(interested_person);
         }
+      },
+
+      add_teacher : function () {
+        var name = jquery('#add_teacher_input').val();
+        var workshopId = jquery('.workshop_details').attr('id');
+
+        var payload = {
+            name: name
+        };
+
+        var self = this;
+
+        jquery.ajax({
+            method: 'PUT',
+            url: 'http://localhost:8080/api/workshops/' + workshopId + '/instructor',
+            data: JSON.stringify(payload),
+            dataType: 'json',
+            contentType: 'application/json'
+        }).done(self.update_teacher);
+      },
+
+      update_teacher : function (data) {
+        // FIXME - the code in this function is duplicated
+        var instructor_name = document.createElement('span');
+        instructor_name.setAttribute('id', 'teacher_name');
+        instructor_name.textContent = data.instructor;
+
+        var instructor_label = document.createElement('span');
+        instructor_label.textContent = " has signed up to teach this workshop";
+
+        var instructor_section = document.createElement('div');
+        instructor_section.setAttribute('class', 'instructor');
+        instructor_section.appendChild(instructor_name);
+        instructor_section.appendChild(instructor_label);
+
+        var details = document.getElementById(data.id);
+        details.appendChild(instructor_section)
       }
     };
 };

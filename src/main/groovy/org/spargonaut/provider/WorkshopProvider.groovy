@@ -31,4 +31,11 @@ class WorkshopProvider {
         workshopDao.update(workshop)
         workshop
     }
+
+    Workshop setInstructor(String workshopId, Map addInstructorMap) {
+        Workshop workshop = workshopDao.getWorkshopById(workshopId)
+        workshop.addInstructor(addInstructorMap.name)
+        workshopDao.update(workshop)
+        workshop
+    }
 }

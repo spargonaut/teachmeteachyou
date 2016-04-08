@@ -17,6 +17,7 @@ class WorkshopMapper implements ResultSetMapper<Workshop> {
         map.interestedPeople.each {
             workshop.addInterestedPerson(it)
         }
+        workshop.addInstructor(map.instructor)
         workshop
     }
 }

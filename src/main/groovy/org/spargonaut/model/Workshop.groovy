@@ -11,6 +11,7 @@ class Workshop {
     String title
     String details
     List interestedPeople = []
+    String instructor
 
     public Workshop(String name, UUID id, String title, String details) {
         this.name = name
@@ -21,5 +22,9 @@ class Workshop {
 
     public void addInterestedPerson(String name) {
         interestedPeople << name
+    }
+
+    public void addInstructor(String name) {
+        instructor = name;
     }
 }

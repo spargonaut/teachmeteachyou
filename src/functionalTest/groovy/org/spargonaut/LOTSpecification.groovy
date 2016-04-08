@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import spock.lang.Specification
 
+@SuppressWarnings('AbcMetric')
 class LOTSpecification extends Specification {
 
     private static final String WORKSHOP_SUBMIT_BUTTON_ID = 'workshop_submit'
@@ -30,6 +31,7 @@ class LOTSpecification extends Specification {
         given: 'a user who wants to create a new workshop'
         String userOne = 'aloicious abercrombie'
         String userTwo = 'mike smith'
+        String userThree = 'bob roger'
         String workshopName = 'some new workshop'
         String workshopDtls = 'these are some more details'
 
@@ -41,7 +43,6 @@ class LOTSpecification extends Specification {
 
         when: 'the user fills in the form with that information and clicks the create button'
         submitWorkshopInformation(userOne, workshopName, workshopDtls)
-        driver.findElement(By.id(WORKSHOP_SUBMIT_BUTTON_ID)).click()
 
         then: 'the new workshop shows up in the workshop list'
         int maxTimeToWaitForElement = 2
@@ -78,24 +79,26 @@ class LOTSpecification extends Specification {
         then: 'the details of that workshop are displayed on the page again'
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(WORKSHOP_DETAILS_NAME_ID), userOne))
 
-        when: 'the second user adds their name to the list'
-        WebElement addInterestInput = driver.findElement(By.id('add_interest_input'))
-        addInterestInput.sendKeys(userTwo)
+        when: 'the second user adds their name to the list of interested people'
+        driver.findElement(By.id('add_interest_input')).sendKeys(userTwo)
         driver.findElement(By.id('add_interest_button')).click()
 
         then: 'that users name shows up on the interested list'
         List<WebElement> interestedPeople = driver.findElements(By.xpath('.//*'))
         wait.until(ExpectedConditions.textToBePresentInElement(interestedPeople.first(), userTwo))
+
+        when: 'a third user adds their name saying they can teach that workshop'
+        driver.findElement(By.id('add_teacher_input')).sendKeys(userThree)
+        driver.findElement(By.id('add_teacher_button')).click()
+
+        then: 'that users name show up as being able to teach that workshop'
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('teacher_name'), userThree))
     }
 
     private void submitWorkshopInformation(String userName, String workshopName, String workshopDtls) {
-        WebElement nameInput = driver.findElement(By.id('name_input'))
-        nameInput.sendKeys(userName)
-
-        WebElement newWorkshopInput = driver.findElement(By.id('new_workshop_title'))
-        newWorkshopInput.sendKeys(workshopName)
-
-        WebElement newWorkshopDetails = driver.findElement(By.id('new_workshop_details'))
-        newWorkshopDetails.sendKeys(workshopDtls)
+        driver.findElement(By.id('name_input')).sendKeys(userName)
+        driver.findElement(By.id('new_workshop_title')).sendKeys(workshopName)
+        driver.findElement(By.id('new_workshop_details')).sendKeys(workshopDtls)
+        driver.findElement(By.id(WORKSHOP_SUBMIT_BUTTON_ID)).click()
     }
 }

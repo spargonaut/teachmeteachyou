@@ -83,11 +83,13 @@ class WorkshopDaoTest extends Specification {
         Workshop updatedWorkshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
         updatedWorkshop.addInterestedPerson('billy joe')
         updatedWorkshop.addInterestedPerson('mike smith')
+        updatedWorkshop.addInstructor('Tom Theteacher')
         workshopDAO.update(updatedWorkshop)
 
         Workshop expectedWorkshop = new Workshop('jane doe', workshopId, 'something to do', 'some details')
         expectedWorkshop.addInterestedPerson('billy joe')
         expectedWorkshop.addInterestedPerson('mike smith')
+        expectedWorkshop.addInstructor('Tom Theteacher')
 
         expect:
         workshopDAO.getWorkshopById(workshopId.toString()) == expectedWorkshop
