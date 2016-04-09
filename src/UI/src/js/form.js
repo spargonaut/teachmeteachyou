@@ -3,7 +3,7 @@ var workshop = require('./workshop');
 
 var form = function () {
     return {
-            show_button : function (doc) {
+        show_button : function (doc) {
 
             var submit_button = doc.createElement('button');
             submit_button.setAttribute('id', 'workshop_form_button');
@@ -15,7 +15,7 @@ var form = function () {
         },
 
         hide_form : function () {
-            var action_div = document.getElementById('action');
+            var action_div = document.getElementsByClassName('action')[0];
             action_div.innerHTML = "";
             action_div.appendChild(this.show_button(document));
         },
@@ -63,12 +63,12 @@ var form = function () {
             workshop_form.appendChild(submit_button);
             workshop_form.appendChild(hide_form_button);
 
-            var action_div = doc.getElementById('action');
+            var action_div = doc.getElementsByClassName('action')[0];
             action_div.innerHTML = "";
             action_div.appendChild(workshop_form);
         },
 
-        create : function (doc) {
+        create : function () {
             var name = jquery('#name_input').val();
             var new_workshop_title = jquery('#new_workshop_title').val();
             var new_workshop_details = jquery('#new_workshop_details').val();
@@ -83,7 +83,7 @@ var form = function () {
                 return workshop().getAllWorkshops();
             };
 
-            var self = this
+            var self = this;
             var form_hider = function () {
                 return self.hide_form();
             };

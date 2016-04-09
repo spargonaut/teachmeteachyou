@@ -8,7 +8,7 @@ load_page = function () {
     document.body.innerHTML = "";
 
     var action = document.createElement('div');
-    action.setAttribute('id', 'action');
+    action.setAttribute('class', 'action');
     action.appendChild(form().show_button(document));
 
     var workshops = document.createElement('div');
