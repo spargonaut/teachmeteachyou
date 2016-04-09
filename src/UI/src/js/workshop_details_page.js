@@ -94,7 +94,7 @@ var workshop_details_page = function () {
           }
       },
 
-      add_interest: function (workshopId) {
+      add_interest: function () {
         var name = jquery('#add_interest_input').val();
         var id = jquery('.workshop_details').attr('id');
 
@@ -105,8 +105,8 @@ var workshop_details_page = function () {
         var self = this;
 
         jquery.ajax({
-            method: 'PATCH',
-            url: 'http://localhost:8080/api/workshops/' + id,
+            method: 'POST',
+            url: 'http://localhost:8080/api/workshops/' + id + '/interested',
             data: JSON.stringify(payload),
             dataType: 'json',
             contentType: 'application/json'

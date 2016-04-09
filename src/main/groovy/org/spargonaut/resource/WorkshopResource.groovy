@@ -1,7 +1,6 @@
 package org.spargonaut.resource
 
 import com.google.inject.Inject
-import io.dropwizard.jersey.PATCH
 import org.spargonaut.model.Workshop
 import org.spargonaut.provider.WorkshopProvider
 
@@ -45,8 +44,8 @@ class WorkshopResource {
         workshopProvider.getById(workshopId)
     }
 
-    @PATCH
-    @Path('{workshopId}')
+    @POST
+    @Path('{workshopId}/interested')
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     Response addInterestedPerson(@PathParam('workshopId') String workshopId, Map addInterestPayload) {
