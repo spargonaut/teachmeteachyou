@@ -7,6 +7,7 @@ plugins {
     id 'org.flywaydb.flyway' version '3.2'
     id 'codenarc'
     id 'idea'
+    id 'application'
 }
 
 repositories {
@@ -77,11 +78,11 @@ task runLocal(dependsOn: jar, type: JavaExec) {
     args 'server', 'LOTConfiguration.yml'
 }
 
+mainClassName = 'org.spargonaut.LOTApplication'
+
 task startBackgroundApp(type: StartBackgroundApp) {
     dependsOn 'flywayMigrate'
-
-    classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'org.spargonaut.LOTApplication'
+    archive = shadowJar.archiveName
     args = ['server', 'LOTConfiguration.yml']
 }
 
@@ -123,4 +124,11 @@ idea {
         excludeDirs += file 'src/UI/node_modules'
         excludeDirs += file 'src/main/resources/assets/ui'
     }
+}
+
+flywayMigrate.mustRunAfter flywayClean
+integrationTest.mustRunAfter flywayMigrate
+
+task runAll {
+    dependsOn deployUI, flywayClean, flywayMigrate, integrationTest, functionalTest
 }

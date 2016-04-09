@@ -5,13 +5,13 @@ import org.gradle.api.tasks.TaskAction
 
 class StartBackgroundApp extends DefaultTask {
 
-    def classpath
-    def mainClass
     def args
+    def archive
 
     @TaskAction
     def startApp() {
-        def args = ['java', '-cp', classpath.join(':'), mainClass, *args]
+        String fullyQualifiedArchive = "build/libs/${archive}"
+        def args = ['java', '-jar', fullyQualifiedArchive, *args]
         ProcessBuilder builder = new ProcessBuilder(args)
         builder.redirectErrorStream(true)
         builder.directory(new File('.'))
