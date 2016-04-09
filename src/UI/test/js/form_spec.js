@@ -6,9 +6,11 @@ var form = require('../../src/js/form.js');
 describe ('Form', function () {
     it ('should replace the show workshop form button with the workshop form', function () {
         var stubbed_body = '<body onload="load_page()">' +
-            '<button onclick="show_workshop_form()" type="button" id="workshop_form_button">' +
-                'Create Workshop' +
-            '</button>' +
+            '<div id="action">' +
+                '<button onclick="show_workshop_form()" type="button" id="workshop_form_button">' +
+                    'Create Workshop' +
+                '</button>' +
+            '</div>' +
             '<div id="workshops"></div>' +
         '</body>';
 

@@ -33,8 +33,8 @@ done -- should show the other details of the workshop
 - stretch - should show the number of people interested (on workshops page)
 - stretch - should show the list of people interested (on details page)
 
-- user can add their name as being interested in a workshop
--- should be able to add further details to the workshop
+done - user can add their name as being interested in a workshop
+- stretch - should be able to add further details to the workshop
 
 done - user can add their name as being able to teach the subject
 

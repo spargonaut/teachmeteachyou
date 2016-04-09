@@ -15,12 +15,9 @@ var form = function () {
         },
 
         hide_form : function () {
-            var show_form_button = this.show_button(document);
-
-            var workshops = document.getElementById('workshops');
-            workshops.parentNode.insertBefore(show_form_button, workshops);
-            var workshop_form = document.getElementById('workshop_form');
-            workshops.parentNode.removeChild(workshop_form);
+            var action_div = document.getElementById('action');
+            action_div.innerHTML = "";
+            action_div.appendChild(this.show_button(document));
         },
 
         show_form : function (doc) {
@@ -66,10 +63,9 @@ var form = function () {
             workshop_form.appendChild(submit_button);
             workshop_form.appendChild(hide_form_button);
 
-            var workshops = doc.getElementById('workshops');
-            workshops.parentNode.insertBefore(workshop_form, workshops);
-            var workshop_form_button = doc.getElementById('workshop_form_button');
-            workshops.parentNode.removeChild(workshop_form_button);
+            var action_div = doc.getElementById('action');
+            action_div.innerHTML = "";
+            action_div.appendChild(workshop_form);
         },
 
         create : function (doc) {
@@ -102,6 +98,6 @@ var form = function () {
             .then(form_hider);
         }
     };
-}
+};
 
 module.exports = form;

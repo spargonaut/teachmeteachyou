@@ -7,10 +7,14 @@ load_page = function () {
     var body = document.getElementsByTagName('body')[0];
     document.body.innerHTML = "";
 
-    body.appendChild(form().show_button(document));
+    var action = document.createElement('div');
+    action.setAttribute('id', 'action');
+    action.appendChild(form().show_button(document));
 
     var workshops = document.createElement('div');
     workshops.setAttribute('id', 'workshops');
+
+    body.appendChild(action);
     body.appendChild(workshops);
 
     workshop().getAllWorkshops();
@@ -21,7 +25,7 @@ createWorkshop = function () {
 };
 
 show_workshop_form = function () {
-    form().show_form(document);
+    form().show_form();
 };
 
 hide_workshop_form = function () {
