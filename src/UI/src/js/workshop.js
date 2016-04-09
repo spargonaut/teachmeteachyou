@@ -21,7 +21,7 @@ var workshop = function () {
                     element.setAttribute('class', className);
                     element.textContent = content;
                     return element;
-                }
+                };
 
                 var workshops  = document.createElement('div');
                 workshops.setAttribute('id', 'workshops');
@@ -29,7 +29,7 @@ var workshop = function () {
                 for (var i = 0; i < data.workshops.length; i++) {
                     var workshop = document.createElement('div');
                     workshop.classList.add('workshop');
-                    var show_workshop_function = 'show_workshop_details("' + data.workshops[i].id + '")'
+                    var show_workshop_function = 'show_workshop_details("' + data.workshops[i].id + '")';
                     workshop.setAttribute('onClick', show_workshop_function);
 
                     workshop.appendChild(newSpan('name_display', data.workshops[i].name));
@@ -51,5 +51,5 @@ var workshop = function () {
             }).done(details.show);
         }
     };
-}
+};
 module.exports = workshop;
