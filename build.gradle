@@ -128,7 +128,10 @@ idea {
 
 flywayMigrate.mustRunAfter flywayClean
 integrationTest.mustRunAfter flywayMigrate
+shadowJar.mustRunAfter deployUI
+functionalTest.mustRunAfter shadowJar
+startBackgroundApp.mustRunAfter shadowJar
 
 task runAll {
-    dependsOn deployUI, flywayClean, flywayMigrate, integrationTest, functionalTest
+    dependsOn deployUI, flywayClean, flywayMigrate, integrationTest, functionalTest, shadowJar
 }

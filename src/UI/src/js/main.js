@@ -25,7 +25,7 @@ createWorkshop = function () {
 };
 
 show_workshop_form = function () {
-    form().show_form();
+    form().show_form(document);
 };
 
 hide_workshop_form = function () {
