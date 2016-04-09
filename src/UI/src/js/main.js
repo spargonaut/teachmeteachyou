@@ -20,7 +20,7 @@ load_page = function () {
     workshop().getAllWorkshops();
 };
 
-createWorkshop = function () {
+create_workshop = function () {
     form().create(document);
 };
 

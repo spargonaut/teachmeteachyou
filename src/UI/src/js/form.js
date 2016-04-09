@@ -8,7 +8,7 @@ var form = function () {
             var submit_button = doc.createElement('button');
             submit_button.setAttribute('id', 'workshop_form_button');
             submit_button.setAttribute('type', 'button');
-            submit_button.setAttribute('onClick', 'show_workshop_form()');
+            submit_button.addEventListener('click', show_workshop_form);
             submit_button.textContent = 'Create Workshop';
 
             return submit_button;
@@ -40,13 +40,13 @@ var form = function () {
             var submit_button = doc.createElement('button');
             submit_button.setAttribute('id', 'workshop_submit');
             submit_button.setAttribute('type', 'button');
-            submit_button.setAttribute('onClick', 'createWorkshop()');
+            submit_button.addEventListener('click', create_workshop);
             submit_button.textContent = 'Create';
 
             var hide_form_button = doc.createElement('button');
             hide_form_button.setAttribute('id', 'hide_form_button');
             hide_form_button.setAttribute('type', 'button');
-            hide_form_button.setAttribute('onClick', 'hide_workshop_form()');
+            hide_form_button.addEventListener('click', hide_workshop_form);
             hide_form_button.textContent = 'Cancel';
 
 
