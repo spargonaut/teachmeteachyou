@@ -23,8 +23,8 @@ var workshop = function () {
                     return element;
                 };
 
-                var workshops  = document.createElement('div');
-                workshops.setAttribute('id', 'workshops');
+                var content  = document.createElement('div');
+                content.setAttribute('id', 'content');
 
                 for (var i = 0; i < data.workshops.length; i++) {
                     var workshop = document.createElement('div');
@@ -38,9 +38,9 @@ var workshop = function () {
                     workshop.appendChild(spacer);
                     workshop.appendChild(newSpan('workshop_title', data.workshops[i].title));
 
-                    workshops.appendChild(workshop);
+                    content.appendChild(workshop);
                 }
-                jquery('#workshops').replaceWith(workshops);
+                jquery('#content').replaceWith(content);
         },
 
         get_details : function (workshopId) {

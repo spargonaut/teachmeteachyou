@@ -11,11 +11,11 @@ load_page = function () {
     action.setAttribute('class', 'action');
     action.appendChild(form().show_button(document));
 
-    var workshops = document.createElement('div');
-    workshops.setAttribute('id', 'workshops');
+    var content = document.createElement('div');
+    content.setAttribute('id', 'content');
 
     body.appendChild(action);
-    body.appendChild(workshops);
+    body.appendChild(content);
 
     workshop().getAllWorkshops();
 };
