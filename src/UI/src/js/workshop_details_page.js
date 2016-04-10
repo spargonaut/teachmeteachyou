@@ -59,7 +59,7 @@ var workshop_details_page = function () {
 
           var details = document.createElement('div');
           details.setAttribute('id', data.id);
-          details.setAttribute('class', 'workshop_details');
+          details.setAttribute('class', 'content');
           details.appendChild(workshop_name);
           details.appendChild(workshop_title);
           details.appendChild(workshop_details);
