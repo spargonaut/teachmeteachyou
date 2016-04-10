@@ -102,7 +102,7 @@ var workshop_details_page = function () {
 
       add_interest: function () {
         var name = jquery('#add_interest_input').val();
-        var id = jquery('.workshop_details').attr('id');
+        var id = jquery('.content').attr('id');
 
         var payload = {
             name: name
@@ -138,7 +138,7 @@ var workshop_details_page = function () {
 
       add_teacher : function () {
         var name = jquery('#add_teacher_input').val();
-        var workshopId = jquery('.workshop_details').attr('id');
+        var workshopId = jquery('.content').attr('id');
 
         var payload = {
             name: name

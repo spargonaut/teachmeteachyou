@@ -12,7 +12,7 @@ load_page = function () {
     action.appendChild(form().show_button(document));
 
     var content = document.createElement('div');
-    content.setAttribute('id', 'content');
+    content.setAttribute('class', 'content');
 
     body.appendChild(action);
     body.appendChild(content);

@@ -24,7 +24,7 @@ var workshop = function () {
                 };
 
                 var content  = document.createElement('div');
-                content.setAttribute('id', 'content');
+                content.setAttribute('class', 'content');
 
                 for (var i = 0; i < data.workshops.length; i++) {
                     var workshop = document.createElement('div');
@@ -40,7 +40,7 @@ var workshop = function () {
 
                     content.appendChild(workshop);
                 }
-                jquery('#content').replaceWith(content);
+                jquery('.content').replaceWith(content);
         },
 
         get_details : function (workshopId) {
