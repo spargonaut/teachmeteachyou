@@ -32,7 +32,7 @@ var workshop_details_page = function () {
           add_teacher_button.textContent = 'I can teach that!';
 
           var action_div = document.createElement('div');
-          action_div.setAttribute('id', 'action');
+          action_div.setAttribute('class', 'action');
           action_div.appendChild(add_interest_input);
           action_div.appendChild(add_interest_button);
           action_div.appendChild(add_teacher_input);
