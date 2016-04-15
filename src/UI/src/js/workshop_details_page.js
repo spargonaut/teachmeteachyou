@@ -84,19 +84,22 @@ var workshop_details_page = function () {
             extras_div.appendChild(instructor_section)
           }
 
-          var interested_people = document.createElement('div');
-          var interested_people_label = document.createElement('div');
-          interested_people_label.textContent = "These people are interested in this workshop too:";
-          interested_people.appendChild(interested_people_label);
+          if (data.interestedPeople.length > 0) {
+            console.log('interested people', data.interestedPeople.length);
+            var interested_people = document.createElement('div');
+            var interested_people_label = document.createElement('div');
+            interested_people_label.textContent = "These people are interested in this workshop too:";
+            interested_people.appendChild(interested_people_label);
 
-          interested_people.setAttribute('id', 'interested_people');
-          for (let person of data.interestedPeople) {
-              var interested_person = document.createElement('div');
-              interested_person.textContent = person;
-              interested_people.appendChild(interested_person);
+            interested_people.setAttribute('id', 'interested_people');
+            for (let person of data.interestedPeople) {
+                var interested_person = document.createElement('div');
+                interested_person.textContent = person;
+                interested_people.appendChild(interested_person);
+            }
+            extras_div.appendChild(interested_people);
           }
 
-          extras_div.appendChild(interested_people);
           body.appendChild(extras_div);
       },
 
