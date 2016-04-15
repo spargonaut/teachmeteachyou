@@ -87,11 +87,12 @@ var workshop_details_page = function () {
           if (data.interestedPeople.length > 0) {
             console.log('interested people', data.interestedPeople.length);
             var interested_people = document.createElement('div');
+            interested_people.setAttribute('id', 'interested_people');
+
             var interested_people_label = document.createElement('div');
             interested_people_label.textContent = "These people are interested in this workshop too:";
             interested_people.appendChild(interested_people_label);
 
-            interested_people.setAttribute('id', 'interested_people');
             for (let person of data.interestedPeople) {
                 var interested_person = document.createElement('div');
                 interested_person.textContent = person;
@@ -124,10 +125,17 @@ var workshop_details_page = function () {
       },
 
       update_interested : function (data) {
-        var interested_people = document.getElementById('interested_people');
-        interested_people.textContent = "";
-
         // FIXME - the code in this function is duplicated
+        var interested_people = document.getElementById('interested_people');
+        console.log('interested people update', data.interestedPeople.length);
+        if (interested_people == null) {
+          var extras = document.getElementsByClassName('extras')[0];
+          interested_people = document.createElement('div');
+          interested_people.setAttribute('id', 'interested_people');
+          extras.appendChild(interested_people);
+        }
+
+        interested_people.textContent = "";
         var interested_people_label = document.createElement('div');
         interested_people_label.textContent = "These people are interested in this workshop too:";
         interested_people.appendChild(interested_people_label);
