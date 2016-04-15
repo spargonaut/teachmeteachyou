@@ -26,6 +26,9 @@ body {
     width: 90%;
     text-align: center;
 }
+div.content div {
+    margin: 1rem auto 1rem auto;
+}
 
 .extras {
     padding-top: 1rem;
@@ -49,8 +52,9 @@ body {
 label {
     font-weight: bold;
     display: block;
-    width: 150px;
+    width: 250px;
     float: left;
+    font-size: 32px;
 }
 
 label:after {
@@ -59,7 +63,7 @@ label:after {
 
 fieldset {
     border: 3px solid yellowgreen;
-    width: 300px;
+    width: 1000px;
     padding: 1rem;
     text-align: left;
 }
@@ -70,11 +74,39 @@ fieldset legend {
     font-weight: bold;
 }
 
-fieldset.workshop_form textarea {
+fieldset input {
+    padding: 15px 32px;
+    margin-right: 10px;
+}
+
+fieldset textarea {
     resize: none;
-    width: 320px;
+    width: 735px;
 }
 
 button {
     margin: 0.25rem;
+    background-color: yellowgreen;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    /*color: #444;*/
+}
+
+.--pad-right {
+    margin-right:25px;
+}
+
+span {
+    border-color: red;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+#workshop_header {
+    font-weight: bold;
+    font-size: 32px;
 }

@@ -15,7 +15,7 @@ class LOTSpecification extends Specification {
     private static final String WORKSHOP_TITLE_CLASSNAME = 'workshop_title'
     private static final String WORKSHOP_FORM_ID = 'workshop_form'
     private static final String NAME_DISPLAY_CLASSNAME = 'name_display'
-    private static final String WORKSHOP_DETAILS_NAME_ID = 'workshop_details_name'
+    private static final String WORKSHOP_DETAILS_HEADER_ID = 'workshop_header'
 
     WebDriver driver = new FirefoxDriver()
 
@@ -60,8 +60,8 @@ class LOTSpecification extends Specification {
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
         then: 'the details of that workshop are displayed on the page'
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(WORKSHOP_DETAILS_NAME_ID), userOne))
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_title'), workshopName))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(WORKSHOP_DETAILS_HEADER_ID), userOne))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(WORKSHOP_DETAILS_HEADER_ID), workshopName))
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('workshop_details_details'), workshopDtls))
 
         when: 'the user clicks the done button'
@@ -77,7 +77,7 @@ class LOTSpecification extends Specification {
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
         then: 'the details of that workshop are displayed on the page again'
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(WORKSHOP_DETAILS_NAME_ID), userOne))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id(WORKSHOP_DETAILS_HEADER_ID), userOne))
 
         when: 'the second user adds their name to the list of interested people'
         driver.findElement(By.id('add_interest_input')).sendKeys(userTwo)

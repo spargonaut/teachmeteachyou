@@ -16,6 +16,7 @@ var workshop_details_page = function () {
           var add_interest_button = document.createElement('button');
           add_interest_button.setAttribute('id', 'add_interest_button');
           add_interest_button.setAttribute('type', 'button');
+          add_interest_button.setAttribute('class', '--pad-right');
           add_interest_button.addEventListener('click', add_interested_person);
           add_interest_button.textContent = 'add me to the list!';
 
@@ -39,13 +40,9 @@ var workshop_details_page = function () {
           action_div.appendChild(add_teacher_button);
           body.appendChild(action_div);
 
-          var workshop_name = document.createElement('div');
-          workshop_name.setAttribute('id', 'workshop_details_name');
-          workshop_name.textContent = data.name;
-
-          var workshop_title = document.createElement('div');
-          workshop_title.setAttribute('id', 'workshop_details_title');
-          workshop_title.textContent = data.title;
+          var workshop_header = document.createElement('div');
+          workshop_header.setAttribute('id', 'workshop_header');
+          workshop_header.textContent = data.name + " wants to learn " + data.title;
 
           var workshop_details = document.createElement('div');
           workshop_details.setAttribute('id', 'workshop_details_details');
@@ -60,8 +57,7 @@ var workshop_details_page = function () {
           var details = document.createElement('div');
           details.setAttribute('id', data.id);
           details.setAttribute('class', 'content');
-          details.appendChild(workshop_name);
-          details.appendChild(workshop_title);
+          details.appendChild(workshop_header);
           details.appendChild(workshop_details);
           details.appendChild(done_button);
           body.appendChild(details);
@@ -70,17 +66,9 @@ var workshop_details_page = function () {
           extras_div.setAttribute('class', 'extras');
 
           if (data.instructor) {
-            var instructor_name = document.createElement('span');
-            instructor_name.setAttribute('id', 'teacher_name');
-            instructor_name.textContent = data.instructor;
-
-            var instructor_label = document.createElement('span');
-            instructor_label.textContent = " has signed up to teach this workshop";
-
             var instructor_section = document.createElement('div');
             instructor_section.setAttribute('class', 'instructor');
-            instructor_section.appendChild(instructor_name);
-            instructor_section.appendChild(instructor_label);
+            instructor_section.innerHTML = data.instructor + " has signed up to teach this workshop";
             extras_div.appendChild(instructor_section)
           }
 
