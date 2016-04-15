@@ -35,6 +35,7 @@ body {
     width: 90%;
     text-align: center;
 }
+
 .workshop {
     margin: 0.5rem;
     padding: 1rem;
@@ -43,4 +44,37 @@ body {
 
 .workshop span {
     padding: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+label:after {
+    content: ": ";
+}
+
+fieldset {
+    border: 3px solid yellowgreen;
+    width: 300px;
+    padding: 1rem;
+    text-align: left;
+}
+
+fieldset legend {
+    background: yellowgreen;
+    padding: 4px;
+    font-weight: bold;
+}
+
+fieldset.workshop_form textarea {
+    resize: none;
+    width: 320px;
+}
+
+button {
+    margin: 0.25rem;
 }

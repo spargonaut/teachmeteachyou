@@ -33,7 +33,7 @@ var form = function () {
             var new_label = function (name, labelContent) {
                 var label = doc.createElement('label');
                 label.setAttribute('for', name);
-                label.textContent = labelContent + ":";
+                label.textContent = labelContent;
                 return label;
             };
 
@@ -49,17 +49,33 @@ var form = function () {
             hide_form_button.addEventListener('click', hide_workshop_form);
             hide_form_button.textContent = 'Cancel';
 
+            var legend = doc.createElement('legend');
+            legend.textContent = "Create A Workshop";
 
-            var workshop_form = doc.createElement('div');
-            workshop_form.setAttribute('id', 'workshop_form');
-            workshop_form.appendChild(new_label('name_input', 'name'));
-            workshop_form.appendChild(new_input_element('name_input'));
-            workshop_form.appendChild(new_label('new_workshop_title', 'I want to learn'));
-            workshop_form.appendChild(new_input_element('new_workshop_title'));
-            workshop_form.appendChild(doc.createElement('br'));
-            workshop_form.appendChild(new_label('new_workshop_details', 'more details'));
-            workshop_form.appendChild(new_input_element('new_workshop_details'));
-            workshop_form.appendChild(doc.createElement('br'));
+            var name_fieldset = doc.createElement('p');
+            name_fieldset.appendChild(new_label('name_input', 'name'));
+            name_fieldset.appendChild(new_input_element('name_input'));
+
+            var topic_fieldset = doc.createElement('p');
+            topic_fieldset.appendChild(new_label('new_workshop_title', 'I want to learn'));
+            topic_fieldset.appendChild(new_input_element('new_workshop_title'));
+
+            var details_fieldset = doc.createElement('p');
+            details_fieldset.appendChild(new_label('new_workshop_details', 'more details'));
+            details_fieldset.appendChild(doc.createElement('br'));
+            var details_text_area = doc.createElement('textarea');
+            details_text_area.setAttribute('id', 'new_workshop_details');
+            details_text_area.setAttribute('type', 'text');
+            details_text_area.setAttribute('name', 'new_workshop_details');
+            details_text_area.setAttribute('title', 'new_workshop_details');
+            details_fieldset.appendChild(details_text_area);
+
+            var workshop_form = doc.createElement('fieldset');
+            workshop_form.setAttribute('class', 'workshop_form');
+            workshop_form.appendChild(legend);
+            workshop_form.appendChild(name_fieldset);
+            workshop_form.appendChild(topic_fieldset);
+            workshop_form.appendChild(details_fieldset);
             workshop_form.appendChild(submit_button);
             workshop_form.appendChild(hide_form_button);
 
