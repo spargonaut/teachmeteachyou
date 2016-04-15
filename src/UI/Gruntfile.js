@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['clean', 'mochaTest', 'copy', 'browserify']);
-    grunt.registerTask('go', ['copy', 'browserify', 'connect', 'watch']);
+    grunt.registerTask('go', ['clean', 'copy', 'browserify', 'connect', 'watch']);
 
     grunt.initConfig({
         mochaTest: {
