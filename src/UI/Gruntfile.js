@@ -46,7 +46,7 @@ module.exports = function (grunt) {
             server : {
                 options : {
                     port : 9000,
-                    keepalive : false       ,
+                    keepalive : false,
                     base : 'dist'
                 }
             }
@@ -60,7 +60,7 @@ module.exports = function (grunt) {
             },
             html: {
                 files: ['src/index.html'],
-                tasks: ['clean', 'copy']
+                tasks: ['clean', 'copy', 'browserify']
             },
             js: {
                 files: ['src/js/**/*.js'],
