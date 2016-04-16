@@ -1,11 +1,4 @@
-done - configure gradle build to not run the functional tests
-done - generate UUIDs for the workshops in the provider classes
-add screenshots (google: screenshot taker) to selenium output
-done - integration test (for the DAO)
-
 think about deduping
-
-new name: TeachMeTeachYou
 
 TODO:
 - need (functional?) test to cover the loading of multiple workshops on the main page.
@@ -13,32 +6,27 @@ TODO:
 
 questions:
 should the buildSrc directory be in the application direcotry or the root directory?
-initial install of grunt/npm stuff via gradle (via initial import of the project)
 
 
--done - workshop form should be hidden initially
--done -- click a link/button to expose the workshop
--done - click 'add workshop' to create the workshop
--done - (then hide the form)
--done - click 'cancel' to hide the form
+immediate to do:
+- break functional test flow into three tests for three users
+-- user that creates the workshop
+-- user that is interested in the workshop
+-- user that can teach the workshop
+-- update readme with minimums
 
-done - should load all workshops on initial page load
-done-ish -- should show the workshop name and number of people interested in the same workshop
+Infrastructure to do:
+- 'npm install' should be run using a gradle task
+- build pipeline (Austin)
+- okta (pat mcfadden)
+- docker? (Austin)
+- gitlab
 
-- user can click a workshop and see the details of the workshop
-done -- should show the name of the workshop
-done -- should show the workshop creator
-done -- should show the other details of the workshop
--- should show the date created? -
-- stretch - should show the number of people interested (on workshops page)
-- stretch - should show the list of people interested (on details page)
-
-done - user can add their name as being interested in a workshop
-- stretch - should be able to add further details to the workshop
-
-done - user can add their name as being able to teach the subject
-
-stretch:
+functionality to do:
+- should show the number of people interested in the same workshop on the workshop list page
+- should show the date created on the workshop details page
+- should show the number of people interested (on workshop details page)
+- should be able to add further details to the workshop
 - user creating workshop can indicate what days are best for them
 - user showing interest in a workshop can indicate what days are best for them
 - user able to teach can indicate what days are best for them
