@@ -9,8 +9,8 @@ should the buildSrc directory be in the application direcotry or the root direct
 
 
 immediate to do:
-- update readme with minimums to run
-- make filenames consistent with application name (e.g. LOT* -> TMTY* and cognitiveConnections -> TMTY*)
+- figure out whats up with the styling during functional tests
+- update readme with current minimums to run
 
 general to do:
 - update idea code formatting file
