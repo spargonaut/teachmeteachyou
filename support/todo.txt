@@ -9,12 +9,8 @@ should the buildSrc directory be in the application direcotry or the root direct
 
 
 immediate to do:
-- break functional test flow into three tests for three users
--- user that creates the workshop
--- user that is interested in the workshop
--- user that can teach the workshop
--- update readme with minimums to run
--- make filenames consistent with application name (e.g. LOT* -> TMTY* and cognitiveConnections -> TMTY*)
+- update readme with minimums to run
+- make filenames consistent with application name (e.g. LOT* -> TMTY* and cognitiveConnections -> TMTY*)
 
 general to do:
 - update idea code formatting file
