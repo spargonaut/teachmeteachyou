@@ -13,8 +13,11 @@ immediate to do:
 -- user that creates the workshop
 -- user that is interested in the workshop
 -- user that can teach the workshop
--- update readme with minimums
+-- update readme with minimums to run
 -- make filenames consistent with application name (e.g. LOT* -> TMTY* and cognitiveConnections -> TMTY*)
+
+general to do:
+- update idea code formatting file
 
 Infrastructure to do:
 - 'npm install' should be run using a gradle task
