@@ -4,16 +4,16 @@ import org.junit.Rule
 import org.springframework.boot.test.OutputCapture
 import spock.lang.Specification
 
-class LOTApplicationTest extends Specification {
+class TMTYApplicationTest extends Specification {
 
     @Rule
     private final OutputCapture capture = new OutputCapture()
 
-    void 'should name the application LOThello world'() {
+    void 'should name the application'() {
         given:
-        LOTApplication lotApplication = []
+        TMTYApplication application = []
 
         expect:
-        lotApplication.getName() == 'LOTApplication'
+        application.getName() == 'TMTYApplication'
     }
 }

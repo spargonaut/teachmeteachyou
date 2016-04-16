@@ -8,19 +8,19 @@ import io.dropwizard.setup.Environment
 import org.skife.jdbi.v2.DBI
 import org.spargonaut.dao.WorkshopDao
 
-class LOTGuiceModule extends AbstractModule {
+class TMTYGuiceModule extends AbstractModule {
 
-    private final LOTConfiguration configuration
+    private final TMTYConfiguration configuration
     private final Environment environment
 
-    public LOTGuiceModule(final LOTConfiguration configuration, final Environment environment) {
+    public TMTYGuiceModule(final TMTYConfiguration configuration, final Environment environment) {
         this.configuration = configuration
         this.environment = environment
     }
 
     @Provides
     @Singleton
-    public DBI prepareJdbi(final LOTConfiguration ckonfiguration, final Environment environment) {
+    public DBI prepareJdbi(final TMTYConfiguration configuration, final Environment environment) {
         new DBIFactory().build(environment, configuration.getDataSourceFactory(), 'cognitiveConnections')
     }
 
@@ -31,7 +31,7 @@ class LOTGuiceModule extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(LOTConfiguration).toInstance(configuration)
+        bind(TMTYConfiguration).toInstance(configuration)
         bind(Environment).toInstance(environment)
     }
 }

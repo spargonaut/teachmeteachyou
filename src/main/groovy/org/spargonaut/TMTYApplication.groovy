@@ -12,21 +12,21 @@ import org.spargonaut.resource.WorkshopResource
 import javax.servlet.DispatcherType
 import javax.servlet.FilterRegistration
 
-class LOTApplication extends Application<LOTConfiguration> {
+class TMTYApplication extends Application<TMTYConfiguration> {
     static void main(String[] args) {
-        new LOTApplication().run(args)
+        new TMTYApplication().run(args)
     }
 
     String getName() {
-        return 'LOTApplication'
+        return 'TMTYApplication'
     }
 
-    void initialize(Bootstrap<LOTConfiguration> configuration) {
+    void initialize(Bootstrap<TMTYConfiguration> configuration) {
         configuration.addBundle(new AssetsBundle('/assets/ui', '/', 'index.html'))
     }
 
-    void run(LOTConfiguration configuration, Environment environment) {
-        Injector injector = Guice.createInjector(new LOTGuiceModule(configuration, environment))
+    void run(TMTYConfiguration configuration, Environment environment) {
+        Injector injector = Guice.createInjector(new TMTYGuiceModule(configuration, environment))
         environment.jersey().register(injector.getInstance(WorkshopResource))
 
         FilterRegistration.Dynamic filter = environment.servlets().addFilter('CORSFilter', CrossOriginFilter)

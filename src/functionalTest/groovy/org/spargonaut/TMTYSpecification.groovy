@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait
 import spock.lang.Specification
 
 @SuppressWarnings('AbcMetric')
-class LOTSpecification extends Specification {
+class TMTYSpecification extends Specification {
 
     private static final String WORKSHOP_SUBMIT_BUTTON_ID = 'workshop_submit'
     private static final String WORKSHOP_TITLE_CLASSNAME = 'workshop_title'

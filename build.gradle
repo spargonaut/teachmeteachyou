@@ -15,7 +15,7 @@ repositories {
 }
 
 shadowJar {
-    archiveName = 'LOTApplication.jar'
+    archiveName = 'TMTYApplication.jar'
 }
 
 ext {
@@ -74,16 +74,16 @@ dependencies {
 
 task runLocal(dependsOn: jar, type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    main = 'org.spargonaut.LOTApplication'
-    args 'server', 'LOTConfiguration.yml'
+    main = 'org.spargonaut.TMTYApplication'
+    args 'server', 'TMTYConfiguration.yml'
 }
 
-mainClassName = 'org.spargonaut.LOTApplication'
+mainClassName = 'org.spargonaut.TMTYApplication'
 
 task startBackgroundApp(type: StartBackgroundApp) {
     dependsOn 'flywayMigrate'
     archive = shadowJar.archiveName
-    args = ['server', 'LOTConfiguration.yml']
+    args = ['server', 'TMTYConfiguration.yml']
 }
 
 task stopBackgroundApp(type: StopBackgroundApp) {
