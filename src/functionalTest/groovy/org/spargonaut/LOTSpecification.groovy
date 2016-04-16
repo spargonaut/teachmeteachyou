@@ -92,7 +92,7 @@ class LOTSpecification extends Specification {
         driver.findElement(By.id('add_teacher_button')).click()
 
         then: 'that users name show up as being able to teach that workshop'
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id('teacher_name'), userThree))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('instructor'), userThree))
     }
 
     private void submitWorkshopInformation(String userName, String workshopName, String workshopDtls) {

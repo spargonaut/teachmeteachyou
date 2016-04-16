@@ -156,26 +156,19 @@ var workshop_details_page = function () {
 
       update_teacher : function (data) {
         // FIXME - the code in this function is duplicated
-        var instructor_name = document.createElement('span');
-        instructor_name.setAttribute('id', 'teacher_name');
-        instructor_name.textContent = data.instructor;
-
-        var instructor_label = document.createElement('span');
-        instructor_label.textContent = " has signed up to teach this workshop";
-
         var instructor_section = document.getElementsByClassName('instructor')[0];
+
         if (!instructor_section) {
           instructor_section = document.createElement('div');
           instructor_section.setAttribute('class', 'instructor');
-          var extras_div = document.getElementsByClassName('extras')[0];
-          var first_element = extras_div.firstChild;
-          extras_div.insertBefore(instructor_section, first_element);
         }
-        instructor_section.innerHTML = "";
 
-        instructor_section.setAttribute('class', 'instructor');
-        instructor_section.appendChild(instructor_name);
-        instructor_section.appendChild(instructor_label);
+        instructor_section.innerHTML = "";
+        instructor_section.innerHTML = data.instructor + " has signed up to teach this workshop";
+
+        var extras_div = document.getElementsByClassName('extras')[0];
+        var first_element = extras_div.firstChild;
+        extras_div.insertBefore(instructor_section, first_element);
       }
     };
 };
