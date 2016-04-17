@@ -103,13 +103,18 @@ task functionalTest(type: Test) {
     classpath = sourceSets.functionalTest.runtimeClasspath
 }
 
+task npmInstall(type: Exec) {
+    workingDir 'src/UI'
+    commandLine 'npm', 'install'
+}
+
 task grunt(type: Exec) {
     workingDir 'src/UI'
     commandLine 'grunt'
 }
 
 task deployUI(type: Copy) {
-    dependsOn 'grunt'
+    dependsOn 'grunt', 'npmInstall'
     from 'src/UI/dist'
     into 'src/main/resources/assets/ui'
 }
@@ -131,6 +136,7 @@ integrationTest.mustRunAfter flywayMigrate
 shadowJar.mustRunAfter deployUI
 functionalTest.mustRunAfter shadowJar
 startBackgroundApp.mustRunAfter shadowJar
+grunt.mustRunAfter npmInstall
 
 task runAll {
     dependsOn deployUI, flywayClean, flywayMigrate, integrationTest, functionalTest, shadowJar
