@@ -109,6 +109,7 @@ task npmInstall(type: Exec) {
 }
 
 task grunt(type: Exec) {
+    dependsOn npmInstall
     workingDir 'src/UI'
     commandLine 'grunt'
 }
