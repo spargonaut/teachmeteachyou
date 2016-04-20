@@ -11,6 +11,9 @@ should the buildSrc directory be in the application direcotry or the root direct
 immediate to do:
 - figure out whats up with the styling during functional tests
 - update readme with current minimums to run
+- update gradle task descriptions
+- update build.gradle to the point where someone can clone the repository and run gradlew runAll without having to do anything else
+-- with the exception of prereqs.  e.g.:  java installed, JAVA_HOME set(?), npm installed (anything else?)
 
 general to do:
 - update idea code formatting file
