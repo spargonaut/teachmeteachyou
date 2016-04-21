@@ -11,3 +11,9 @@ sudo su - postgres
 psql
 > create database "cognitiveConnections";
 > alter user postgres password '';
+
+once the above is fulfilled, you can run all the tests and build the fatjar with the command:
+./gradlew runAll
+
+for more available tasks, run:
+./gradlew tasks
