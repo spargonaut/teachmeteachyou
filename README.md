@@ -15,5 +15,14 @@ psql
 once the above is fulfilled, you can run all the tests and build the fatjar with the command:
 ./gradlew runAll
 
+to run the application:
+./gradlew runLocal
+you can then access the application by pointing your browser to:
+localhost:8080
+
+to run the front end client independent of the backend, use:
+./src/UI/grunt go
+
+
 for more available tasks, run:
 ./gradlew tasks
