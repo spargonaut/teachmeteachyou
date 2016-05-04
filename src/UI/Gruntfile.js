@@ -52,7 +52,14 @@ module.exports = function (grunt) {
             }
         },
 
-        clean: ['dist'],
+        clean: {
+          dist: {
+            src: ['dist'],
+            options: {
+              force: true
+            }
+          }
+        },
 
         watch: {
             options: {
