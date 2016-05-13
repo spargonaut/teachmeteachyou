@@ -11,7 +11,7 @@ var workshop = function () {
 
             jquery.ajax({
                 method: "GET",
-                url: 'http://localhost:8080/api/workshops'
+                url: '/api/workshops'
             }).done(workshopLoader);
         },
 
@@ -47,7 +47,7 @@ var workshop = function () {
             var details = workshop_details_page();
             jquery.ajax({
                 method: "GET",
-                url: 'http://localhost:8080/api/workshops/' + workshopId
+                url: '/api/workshops/' + workshopId
             }).done(details.show);
         }
     };

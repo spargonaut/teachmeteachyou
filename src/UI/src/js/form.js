@@ -111,7 +111,7 @@ var form = function () {
 
             jquery.ajax({
                 method: "POST",
-                url: 'http://localhost:8080/api/workshops',
+                url: '/api/workshops',
                 data: JSON.stringify(payload),
                 dataType: 'json',
                 contentType: "application/json"

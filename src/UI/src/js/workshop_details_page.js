@@ -104,7 +104,7 @@ var workshop_details_page = function () {
 
         jquery.ajax({
             method: 'POST',
-            url: 'http://localhost:8080/api/workshops/' + id + '/interested',
+            url: '/api/workshops/' + id + '/interested',
             data: JSON.stringify(payload),
             dataType: 'json',
             contentType: 'application/json'
@@ -147,7 +147,7 @@ var workshop_details_page = function () {
 
         jquery.ajax({
             method: 'PUT',
-            url: 'http://localhost:8080/api/workshops/' + workshopId + '/instructor',
+            url: '/api/workshops/' + workshopId + '/instructor',
             data: JSON.stringify(payload),
             dataType: 'json',
             contentType: 'application/json'
