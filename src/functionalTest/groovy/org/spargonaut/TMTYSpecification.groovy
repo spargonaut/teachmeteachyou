@@ -26,9 +26,12 @@ class TMTYSpecification extends Specification {
     private static final int MAX_TIME_TO_WAIT_FOR_ELEMENT = 2
 
     WebDriver driver = new HtmlUnitDriver(true)
+    WebDriverWait wait;
 
     void setup() {
         driver.get 'http://localhost:30213'
+        wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
+
     }
 
     void cleanup() {
@@ -46,7 +49,6 @@ class TMTYSpecification extends Specification {
         submitWorkshopInformation(WORKSHOP_CREATOR, WORKSHOP_NAME, WORKSHOP_DETAILS)
 
         then: 'the new workshop shows up in the workshop list'
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
         wait.until(
                 ExpectedConditions.textToBePresentInElementLocated(
                         By.className(NAME_DISPLAY_CLASSNAME), WORKSHOP_CREATOR))
@@ -87,7 +89,6 @@ class TMTYSpecification extends Specification {
         submitWorkshopInformation(WORKSHOP_CREATOR, WORKSHOP_NAME, WORKSHOP_DETAILS)
 
         and: 'the user views the details of the workshop'
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className(WORKSHOP_TITLE_CLASSNAME)))
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
@@ -111,7 +112,6 @@ class TMTYSpecification extends Specification {
         submitWorkshopInformation(WORKSHOP_CREATOR, WORKSHOP_NAME, WORKSHOP_DETAILS)
 
         and: 'the user views the details of the workshop'
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className(WORKSHOP_TITLE_CLASSNAME)))
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
