@@ -56,7 +56,7 @@ var workshop_details_page = function () {
 
           var details = document.createElement('div');
           details.setAttribute('id', data.id);
-          details.setAttribute('class', 'content');
+          details.setAttribute('class', 'main_content');
           details.appendChild(workshop_header);
           details.appendChild(workshop_details);
           details.appendChild(done_button);
@@ -95,7 +95,7 @@ var workshop_details_page = function () {
 
       add_interest: function () {
         var name = jquery('#add_interest_input').val();
-        var id = jquery('.content').attr('id');
+        var id = jquery('.main_content').attr('id');
 
         var payload = {
             name: name
@@ -139,7 +139,7 @@ var workshop_details_page = function () {
 
       add_teacher : function () {
         var name = jquery('#add_teacher_input').val();
-        var workshopId = jquery('.content').attr('id');
+        var workshopId = jquery('.main_content').attr('id');
 
         var payload = {
             name: name

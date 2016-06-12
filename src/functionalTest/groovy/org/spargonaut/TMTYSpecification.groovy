@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
-import spock.lang.Ignore
 import spock.lang.Specification
 
 @SuppressWarnings('AbcMetric')
@@ -21,12 +20,15 @@ class TMTYSpecification extends Specification {
     private static final String WORKSHOP_NAME  = 'some new workshop'
     private static final String WORKSHOP_DETAILS = 'these are some more details'
     private static final String WORKSHOP_FORM_BUTTON_ID = 'workshop_form_button'
+    private static final String ADD_TEACHER_INPUT_ID = 'add_teacher_input'
+    private static final String ADD_INTEREST_INPUT_ID = 'add_interest_input'
+    private static final String INSTRUCTOR_CLASSNAME = 'instructor'
     private static final int MAX_TIME_TO_WAIT_FOR_ELEMENT = 2
 
     WebDriver driver = new HtmlUnitDriver(true)
 
     void setup() {
-        driver.get 'http://localhost:8080'
+        driver.get 'http://localhost:30213'
     }
 
     void cleanup() {
@@ -85,16 +87,18 @@ class TMTYSpecification extends Specification {
         submitWorkshopInformation(WORKSHOP_CREATOR, WORKSHOP_NAME, WORKSHOP_DETAILS)
 
         and: 'the user views the details of the workshop'
+        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className(WORKSHOP_TITLE_CLASSNAME)))
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
         when: 'the user adds their name to the interested list'
-        driver.findElement(By.id('add_interest_input')).sendKeys(interestedUser)
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(ADD_INTEREST_INPUT_ID)))
+        driver.findElement(By.id(ADD_INTEREST_INPUT_ID)).sendKeys(interestedUser)
 
         and: 'clicks Im interested'
         driver.findElement(By.id('add_interest_button')).click()
 
         then: 'that users name appears in the interested users list'
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
         wait.until(
                 ExpectedConditions.textToBePresentInElementLocated(
                         By.xpath('//div[@id=\'interested_people\']/div[last()]'), interestedUser))
@@ -107,15 +111,19 @@ class TMTYSpecification extends Specification {
         submitWorkshopInformation(WORKSHOP_CREATOR, WORKSHOP_NAME, WORKSHOP_DETAILS)
 
         and: 'the user views the details of the workshop'
+        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className(WORKSHOP_TITLE_CLASSNAME)))
         driver.findElement(By.className(WORKSHOP_TITLE_CLASSNAME)).click()
 
         when: 'that user indicates they can teach that class'
-        driver.findElement(By.id('add_teacher_input')).sendKeys(teacherUser)
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(WORKSHOP_DETAILS_HEADER_ID)))
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(ADD_TEACHER_INPUT_ID)))
+        driver.findElement(By.id(ADD_TEACHER_INPUT_ID)).sendKeys(teacherUser)
         driver.findElement(By.id('add_teacher_button')).click()
 
         then: 'that users name appears as signed up to teach that workshop'
-        WebDriverWait wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className('instructor'), teacherUser))
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className(INSTRUCTOR_CLASSNAME)))
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.className(INSTRUCTOR_CLASSNAME), teacherUser))
     }
 
     private void submitWorkshopInformation(String userName, String workshopName, String workshopDtls) {
