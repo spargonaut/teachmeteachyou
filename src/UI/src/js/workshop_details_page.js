@@ -81,7 +81,8 @@ var workshop_details_page = function () {
             interested_people_label.textContent = "These people are interested in this workshop too:";
             interested_people.appendChild(interested_people_label);
 
-            for (let person of data.interestedPeople) {
+            for (var index = 0; index < data.interestedPeople.length; index++) {
+                var person = data.interestedPeople[index];
                 var interested_person = document.createElement('div');
                 interested_person.textContent = person;
                 interested_people.appendChild(interested_person);
@@ -128,7 +129,8 @@ var workshop_details_page = function () {
         interested_people_label.textContent = "These people are interested in this workshop too:";
         interested_people.appendChild(interested_people_label);
 
-        for (let person of data.interestedPeople) {
+        for (var index = 0; index < data.interestedPeople.length; index++) {
+            var person = data.interestedPeople[index];
             var interested_person = document.createElement('div');
             interested_person.textContent = person;
             interested_people.appendChild(interested_person);

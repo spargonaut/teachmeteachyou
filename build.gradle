@@ -69,7 +69,9 @@ dependencies {
 
     functionalTestCompile sourceSets.main.output
     functionalTestCompile configurations.testCompile
-    functionalTestCompile 'org.seleniumhq.selenium:selenium-java:2.49.1'
+    functionalTestCompile 'org.seleniumhq.selenium:selenium-java:2.53.0'
+    functionalTestCompile 'org.seleniumhq.selenium:htmlunit-driver:2.21'
+
 }
 
 task runLocal(dependsOn: jar, type: JavaExec) {

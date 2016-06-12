@@ -2,9 +2,10 @@ package org.spargonaut
 
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
+import spock.lang.Ignore
 import spock.lang.Specification
 
 @SuppressWarnings('AbcMetric')
@@ -22,10 +23,10 @@ class TMTYSpecification extends Specification {
     private static final String WORKSHOP_FORM_BUTTON_ID = 'workshop_form_button'
     private static final int MAX_TIME_TO_WAIT_FOR_ELEMENT = 2
 
-    WebDriver driver = new FirefoxDriver()
+    WebDriver driver = new HtmlUnitDriver(true)
 
     void setup() {
-        driver.get 'localhost:8080'
+        driver.get 'http://localhost:8080'
     }
 
     void cleanup() {
