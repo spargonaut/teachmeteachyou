@@ -29,7 +29,8 @@ class TMTYSpecification extends Specification {
     WebDriverWait wait;
 
     void setup() {
-        driver.get 'http://localhost:30213'
+        String hostIp = System.getenv('WEB_HOST') ?: 'localhost'
+        driver.get 'http://' + hostIp + ':30213'
         wait = new WebDriverWait(driver, MAX_TIME_TO_WAIT_FOR_ELEMENT)
 
     }
