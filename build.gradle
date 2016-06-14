@@ -177,7 +177,7 @@ task cleanDocker(type: Exec) {
 flywayMigrate.mustRunAfter flywayClean
 integrationTest.mustRunAfter flywayMigrate
 shadowJar.mustRunAfter deployUI
-//functionalTest.mustRunAfter shadowJar
+functionalTest.mustRunAfter shadowJar
 startBackgroundApp.mustRunAfter shadowJar
 grunt.mustRunAfter npmInstall
 
