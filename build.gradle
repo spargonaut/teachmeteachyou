@@ -25,7 +25,7 @@ ext {
 }
 
 flyway {
-    String databaseHost = System.getenv('POSTGRES_HOST') ?: 'localhost'
+    String databaseHost = System.getenv('DB_HOST') ?: 'localhost'
     url = "jdbc:postgresql://${databaseHost}:5432/cognitiveConnections"
     user = 'postgres'
     password = ''
