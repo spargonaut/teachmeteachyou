@@ -4,6 +4,8 @@ import com.google.inject.Guice
 import com.google.inject.Injector
 import io.dropwizard.Application
 import io.dropwizard.assets.AssetsBundle
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor
+import io.dropwizard.configuration.SubstitutingSourceProvider
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import org.eclipse.jetty.servlets.CrossOriginFilter
@@ -23,6 +25,11 @@ class TMTYApplication extends Application<TMTYConfiguration> {
 
     void initialize(Bootstrap<TMTYConfiguration> configuration) {
         configuration.addBundle(new AssetsBundle('/assets/ui', '/', 'index.html'))
+        configuration.setConfigurationSourceProvider(
+                new SubstitutingSourceProvider(
+                        configuration.getConfigurationSourceProvider(),
+                        new EnvironmentVariableSubstitutor())
+        );
     }
 
     void run(TMTYConfiguration configuration, Environment environment) {
