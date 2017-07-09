@@ -2,7 +2,7 @@ package org.spargonaut
 
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.htmlunit.HtmlUnitDriver
+import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import spock.lang.Specification
@@ -23,9 +23,9 @@ class TMTYSpecification extends Specification {
     private static final String ADD_TEACHER_INPUT_ID = 'add_teacher_input'
     private static final String ADD_INTEREST_INPUT_ID = 'add_interest_input'
     private static final String INSTRUCTOR_CLASSNAME = 'instructor'
-    private static final int MAX_TIME_TO_WAIT_FOR_ELEMENT = 2
+    private static final int MAX_TIME_TO_WAIT_FOR_ELEMENT = 5
 
-    WebDriver driver = new HtmlUnitDriver(true)
+    WebDriver driver = new FirefoxDriver()
     WebDriverWait wait;
 
     void setup() {
