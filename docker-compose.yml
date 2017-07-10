@@ -4,16 +4,16 @@ services:
     build: .
     ports:
       - "30213:30213"
-    volumes:
-      - .:/app
+    environment:
+      - DB_HOST=db
     depends_on:
       - db
-    entrypoint: dockerize -wait tcp://db:5432
-    command: java -jar app/build/libs/TMTYApplication.jar server app/TMTYConfiguration/docker.yml
+    volumes:
+      - ./infrastructure/docker_compose_entrypoint.sh:/opt/docker_compose_entrypoint.sh
+    command: /opt/docker_compose_entrypoint.sh
   db:
     image: postgres:9.5
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_DB=cognitiveConnections
-
+    volumes:
+      - ./infrastructure/db/10-init_db.sql:/docker-entrypoint-initdb.d/10-init.sql
