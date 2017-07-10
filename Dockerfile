@@ -1,6 +1,7 @@
 FROM java:8
-
-RUN apt-get update && apt-get install -y wget
-RUN wget https://github.com/jwilder/dockerize/releases/download/v0.2.0/dockerize-linux-amd64-v0.2.0.tar.gz
-RUN tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.2.0.tar.gz
-
+EXPOSE 30213
+WORKDIR /app
+COPY infrastructure/docker_entrypoint.sh /app
+COPY build/libs/TMTYApplication.jar /app
+COPY TMTYConfiguration/local.yml /app
+CMD ["./docker_entrypoint.sh"]
