@@ -99,23 +99,10 @@ task integrationTest(type: Test, dependsOn: build) {
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
 
-task integrationTestAgainstDocker(type: Test, dependsOn: build) {
-    description 'Runs the integration tests against the docker db container'
-    flyway.url = 'jdbc:postgresql://' + (System.getenv('DB_HOST') ?: 'localhost') + ':5432/cognitiveConnections'
-    testClassesDir = sourceSets.integrationTest.output.classesDir
-    classpath = sourceSets.integrationTest.runtimeClasspath
-}
-
 task functionalTest(type: Test) {
     description 'Runs the functional tests'
     dependsOn 'startBackgroundApp'
     finalizedBy stopBackgroundApp
-    testClassesDir = sourceSets.functionalTest.output.classesDir
-    classpath = sourceSets.functionalTest.runtimeClasspath
-}
-
-task functionalTestAgainstDocker(type: Test) {
-    description 'Runs the functional tests against the docker web container'
     testClassesDir = sourceSets.functionalTest.output.classesDir
     classpath = sourceSets.functionalTest.runtimeClasspath
 }
@@ -149,66 +136,8 @@ idea {
     }
 }
 
-task migrateDocker() {
-    doLast {
-        //TODO write a script that pings the db server until it is ready
-        sleep(5000)
-    }
-
-    finalizedBy flywayMigrate
-}
-
-task configureDockerDatabase(type: Exec) {
-    commandLine 'docker-machine', 'ip'
-
-    standardOutput = new ByteArrayOutputStream()
-    doLast {
-        String host_ip = standardOutput.toString().replaceAll("\\s","")
-        flyway.url = 'jdbc:postgresql://' + host_ip + ':5432/cognitiveConnections'
-    }
-
-    finalizedBy migrateDocker
-}
-
 shadowJar.mustRunAfter clean
 shadowJar.mustRunAfter deployUI
-
-task runDocker(dependsOn: [clean, deployUI, shadowJar], type: Exec) {
-    commandLine 'docker-compose', 'up', '-d'
-
-    finalizedBy configureDockerDatabase
-}
-
-task stopDocker(type: Exec) {
-    commandLine 'docker-compose', 'stop'
-}
-
-task cleanDocker(type: Exec) {
-    commandLine 'docker-compose', 'down'
-}
-
-task startDockerDB(type: Exec) {
-    commandLine 'docker-compose', 'up', '-d', 'db'
-
-    doLast {
-        sleep(5000)
-        def db_host = System.getenv('DB_HOST')
-        flyway.url = 'jdbc:postgresql://' + db_host + ':5432/cognitiveConnections'
-    }
-
-    finalizedBy(flywayMigrate)
-}
-
-task startDockerWeb(type: Exec) {
-    commandLine 'docker-compose', 'up', '-d', 'web'
-
-    doLast {
-        sleep(5000)
-        def db_host = System.getenv('WEB_HOST')
-        flyway.url = 'jdbc:postgresql://' + db_host + ':5432/cognitiveConnections'
-    }
-}
-
 flywayMigrate.mustRunAfter flywayClean
 integrationTest.mustRunAfter flywayMigrate
 shadowJar.mustRunAfter deployUI
