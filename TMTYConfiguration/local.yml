@@ -1,7 +1,7 @@
 dataSourceFactory:
   driverClass: org.postgresql.Driver
   user: postgres
-  url: jdbc:postgresql://${DB_HOST}:5432/cognitiveConnections
+  url: jdbc:postgresql://${DB_HOST:-localhost}:5432/cognitiveConnections
   properties:
     charSet: UTF-8
   maxWaitForConnection: 1s

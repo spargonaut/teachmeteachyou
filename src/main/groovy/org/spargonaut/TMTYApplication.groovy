@@ -28,7 +28,7 @@ class TMTYApplication extends Application<TMTYConfiguration> {
         configuration.setConfigurationSourceProvider(
                 new SubstitutingSourceProvider(
                         configuration.getConfigurationSourceProvider(),
-                        new EnvironmentVariableSubstitutor())
+                        new EnvironmentVariableSubstitutor(false))
         );
     }
 
